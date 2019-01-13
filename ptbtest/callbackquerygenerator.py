@@ -94,7 +94,7 @@ class CallbackQueryGenerator(PtbGenerator):
                 chat = ChatGenerator().get_chat(user=user)
                 message = MessageGenerator().get_message(
                     user=self.bot.getMe(), chat=chat,
-                    bot=self.bot.getMe()).message
+                    bot=self.bot).message
             else:
                 raise BadMessageException
         if inline_message_id:
