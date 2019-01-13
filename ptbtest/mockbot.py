@@ -652,7 +652,7 @@ class Mockbot(TelegramObject):
             update (telegram.Update): The update to insert in the queue.
         """
         self._updates.append(update)
-        time.sleep(.3)
+#        time.sleep(.3)
 
     def getUpdates(self,
                    offset=None,
