@@ -37,20 +37,20 @@ class TestInlineBot(unittest.TestCase):
             escape_chars = '\*_`\['
             return re.sub(r'([%s])' % escape_chars, r'\\\1', text)
 
-        def inlinequery(bot, update):
+        def inlinequery(update, context):
             query = update.inline_query.query
             results = list()
 
-            results.append(InlineQueryResultArticle(id=uuid4(),
+            results.append(InlineQueryResultArticle(id=str(uuid4()),
                                                     title="Caps",
                                                     input_message_content=InputTextMessageContent(
                                                         query.upper())))
-            results.append(InlineQueryResultArticle(id=uuid4(),
+            results.append(InlineQueryResultArticle(id=str(uuid4()),
                                                     title="Bold",
                                                     input_message_content=InputTextMessageContent(
                                                         "*%s*" % escape_markdown(query),
                                                         parse_mode=ParseMode.MARKDOWN)))
-            results.append(InlineQueryResultArticle(id=uuid4(),
+            results.append(InlineQueryResultArticle(id=str(uuid4()),
                                                     title="Italic",
                                                     input_message_content=InputTextMessageContent(
                                                         "_%s_" % escape_markdown(query),

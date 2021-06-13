@@ -164,7 +164,8 @@ class MessageGenerator(PtbGenerator):
                     forward_from_message_id=None,
                     parse_mode=None,
                     channel=False,
-                    bot=None):
+                    bot=None,
+                    **kwargs):
         """
         When called without arguments will return an update object for a message from a private chat with a
         random user. for modifiers see args.
@@ -233,10 +234,10 @@ class MessageGenerator(PtbGenerator):
             video, voice, caption)
 
         return Message(
-            id or next(self.idgen),
-            user,
-            None,
-            chat,
+            message_id=id or next(self.idgen),
+            from_user=user,
+            date=datetime.datetime.now(),
+            chat=chat,
             text=text,
             forward_from=forward_from,
             forward_from_chat=forward_from_chat,
@@ -388,17 +389,17 @@ class MessageGenerator(PtbGenerator):
                     'forward_from_chat must be of type "channel"')
             if not forward_from:
                 forward_from = UserGenerator().get_user()
-        if forward_from and not isinstance(forward_date, int):
+        if forward_from:
             if not isinstance(forward_date, datetime.datetime):
                 now = datetime.datetime.now()
             else:
                 now = forward_date
             try:
                 # Python 3.3+
-                forward_date = int(now.timestamp())
+                forward_date = datetime.datetime.now()
             except AttributeError:
                 # Python 3 (< 3.3) and Python 2
-                forward_date = int(time.mktime(now.timetuple()))
+                forward_date = datetime.datetime.now()
         if (forward_from_message_id and
                 not isinstance(forward_from_message_id, int)) or (
                     forward_from_chat and not forward_from_message_id):
@@ -497,7 +498,7 @@ class MessageGenerator(PtbGenerator):
         if text and parse_mode:
             if parse_mode not in ["HTML", "Markdown"]:
                 raise BadMarkupException(
-                    'Mardown mode must be HTML or Markdown')
+                    'Markdown mode must be HTML or Markdown')
             elif parse_mode == "HTML":
                 text, entities = EntityParser.parse_html(text)
             else:
@@ -542,23 +543,32 @@ class MessageGenerator(PtbGenerator):
             data['height'] = randint(40, 400)
             return Video(**data)
         return Video(
-            str(uuid.uuid4()),
-            randint(40, 400), randint(40, 400), randint(2, 300))
+            file_id=str(uuid.uuid4()),
+            file_unique_id=str(uuid.uuid4()),
+            width=randint(40, 400),
+            height=randint(40, 400),
+            duration=randint(2, 300))
 
     def _get_sticker(self, data=None):
         import uuid
         from random import randint
-        if data:
+        if data is None:
+            data = {}
+        data["file_unique_id"] = data["file_id"] = str(uuid.uuid4())
+        if "width" not in data:
             data['width'] = randint(20, 200)
             data['height'] = randint(20, 200)
-            return Sticker(**data)
-        return Sticker(str(uuid.uuid4()), randint(20, 200), randint(20, 200))
+        if "is_animated" not in data:
+            data["is_animated"] = False
+        return Sticker(**data)
 
     def _get_document(self):
         import uuid
-        return Document(str(uuid.uuid4()), file_name="somedoc.pdf")
+        return Document(file_id=str(uuid.uuid4()), file_unique_id=str(uuid.uuid4()), file_name="somedoc.pdf")
 
     def _get_audio(self):
         import uuid
         from random import randint
-        return Audio(str(uuid.uuid4()), randint(1, 120), title="Some song")
+        return Audio(file_id=str(uuid.uuid4()),
+                     file_unique_id=str(uuid.uuid4()),
+                     duration=randint(1, 120), title="Some song")
