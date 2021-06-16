@@ -12,3 +12,7 @@ The following things make this library attractive to create unittests
 * `Generator` classes to easily create `Users`, `Chats` and `Updates` objects.
 
 Read the [documentation](http://ptbtestsuite.readthedocs.io/en/master/?badge=master) for further reading and check out the examples.
+
+### Disclaimer
+Unstable package. Most files are not up-to-date with latest `python-telegram-bot`. Feel free to contribute.
+#### Use at your own risk.
