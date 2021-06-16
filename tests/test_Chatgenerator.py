@@ -19,7 +19,7 @@
 # You should have received a copy of the GNU Lesser Public License
 # along with this program.  If not, see [http://www.gnu.org/licenses/].
 from __future__ import absolute_import
-from os import sys
+import sys
 sys.path.append("..")
 
 import unittest
@@ -104,16 +104,16 @@ class TestChatGenerator(unittest.TestCase):
         self.assertEqual(c.title, "Awesome Group")
         self.assertEqual(c.username, "AwesomeGroup")
 
-    def test_supergroup_with_username(self):
+    def test_channel_with_username(self):
         c = self.cg.get_chat(type="channel", username="mygroup")
 
         self.assertEqual(c.username, "mygroup")
 
-    def test_supergroup_with_username_title(self):
+    def test_channel_with_username_title(self):
         c = self.cg.get_chat(
-            type="channel", username="mygroup", title="Awesome Group")
+            type="channel", username="mygroup", title="Awesome Channel")
 
-        self.assertEqual(c.title, "Awesome Group")
+        self.assertEqual(c.title, "Awesome Channel")
         self.assertEqual(c.username, "mygroup")
 
 

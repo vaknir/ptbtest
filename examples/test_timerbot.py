@@ -4,7 +4,6 @@ import unittest
 import time
 
 from telegram.ext import CommandHandler
-from telegram.ext import Job
 from telegram.ext import Updater
 
 from ptbtest import ChatGenerator
@@ -28,7 +27,7 @@ class Testtimerbot(unittest.TestCase):
         self.cg = ChatGenerator()
         # And a Messagegenerator and updater (for use with the bot.)
         self.mg = MessageGenerator(self.bot)
-        self.updater = Updater(bot=self.bot)
+        self.updater = Updater(bot=self.bot)  # type: ignore
 
     def test_timer(self):
         # first declare the callback methods
