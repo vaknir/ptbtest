@@ -17,6 +17,8 @@ This example follows the echobot2 example at:
 https://github.com/python-telegram-bot/python-telegram-bot/blob/master/examples/echobot2.py
 
 """
+
+
 class TestEchobot2(unittest.TestCase):
     def setUp(self):
         # For use within the tests we nee some stuff. Starting with a Mockbot
@@ -30,7 +32,7 @@ class TestEchobot2(unittest.TestCase):
 
     def test_help(self):
         # this tests the help handler. So first insert the handler
-        def help(bot, update):
+        def help(update, context):
             update.message.reply_text('Help!')
 
         # Then register the handler with he updater's dispatcher and start polling
@@ -38,7 +40,9 @@ class TestEchobot2(unittest.TestCase):
         self.updater.start_polling()
         # We want to simulate a message. Since we don't care wich user sends it we let the MessageGenerator
         # create random ones
-        update = self.mg.get_message(text="/help")
+        # setting parse_mode, so generator can create entities automatically
+        update = self.mg.get_message(text="/help",
+                                     parse_mode="HTML")
         # We insert the update with the bot so the updater can retrieve it.
         self.bot.insertUpdate(update)
         # sent_messages is the list with calls to the bot's outbound actions. Since we hope the message we inserted
@@ -51,7 +55,7 @@ class TestEchobot2(unittest.TestCase):
         self.updater.stop()
 
     def test_start(self):
-        def start(bot, update):
+        def start(update, context):
             update.message.reply_text('Hi!')
 
         self.updater.dispatcher.add_handler(CommandHandler("start", start))
@@ -59,7 +63,8 @@ class TestEchobot2(unittest.TestCase):
         # Here you can see how we would handle having our own user and chat
         user = self.ug.get_user(first_name="Test", last_name="The Bot")
         chat = self.cg.get_chat(user=user)
-        update = self.mg.get_message(user=user, chat=chat, text="/start")
+        # setting parse_mode, so generator can create entities automatically
+        update = self.mg.get_message(user=user, chat=chat, text="/start", parse_mode = "HTML")
         self.bot.insertUpdate(update)
         self.assertEqual(len(self.bot.sent_messages), 1)
         sent = self.bot.sent_messages[0]
@@ -68,7 +73,7 @@ class TestEchobot2(unittest.TestCase):
         self.updater.stop()
 
     def test_echo(self):
-        def echo(bot, update):
+        def echo(update, context):
             update.message.reply_text(update.message.text)
 
         self.updater.dispatcher.add_handler(MessageHandler(Filters.text, echo))

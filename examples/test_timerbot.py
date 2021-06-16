@@ -4,7 +4,6 @@ import unittest
 import time
 
 from telegram.ext import CommandHandler
-from telegram.ext import Job
 from telegram.ext import Updater
 
 from ptbtest import ChatGenerator
@@ -18,6 +17,8 @@ https://github.com/python-telegram-bot/python-telegram-bot/blob/master/examples/
 We will skip the start and help handlers and focus on the timer.
 
 """
+
+
 class Testtimerbot(unittest.TestCase):
     def setUp(self):
         # For use within the tests we nee some stuff. Starting with a Mockbot
@@ -26,53 +27,50 @@ class Testtimerbot(unittest.TestCase):
         self.cg = ChatGenerator()
         # And a Messagegenerator and updater (for use with the bot.)
         self.mg = MessageGenerator(self.bot)
-        self.updater = Updater(bot=self.bot)
+        self.updater = Updater(bot=self.bot)  # type: ignore
 
     def test_timer(self):
         # first declare the callback methods
-        def alarm(bot, job):
+        def alarm(context):
             """Function to send the alarm message"""
-            bot.sendMessage(job.context, text='Beep!')
+            context.bot.sendMessage(context.job.context["chat_id"], text='Beep!')
 
-        def set(bot, update, args, job_queue, chat_data):
+        def set(update, context):
             """Adds a job to the queue"""
             chat_id = update.message.chat_id
             try:
+                args = context.args
                 # args[0] should contain the time for the timer in seconds
                 due = int(args[0])
                 if due < 0:
-                    update.message.reply_text('Sorry we can not go back to future!')
+                    update.message.reply_text('Sorry we can not go back to the past!')
                     return
 
                 # Add job to queue
-                job = Job(alarm, due, repeat=False, context=chat_id)
-                chat_data['job'] = job
-                job_queue.put(job)
-
+                context.user_data["job"] = context.job_queue.run_once(callback=alarm,
+                                           when = due,
+                                           context={"chat_id": chat_id})
                 update.message.reply_text('Timer successfully set!')
 
             except (IndexError, ValueError):
                 update.message.reply_text('Usage: /set <seconds>')
 
-        def unset(bot, update, chat_data):
+        def unset(update, context):
             """Removes the job if the user changed their mind"""
 
-            if 'job' not in chat_data:
+            if 'job' not in context.user_data:
                 update.message.reply_text('You have no active timer')
                 return
 
-            job = chat_data['job']
+            job = context.user_data['job']
             job.schedule_removal()
-            del chat_data['job']
+            del context.user_data['job']
 
             update.message.reply_text('Timer successfully unset!')
         # Now add those handlers to the updater and start polling
         dp = self.updater.dispatcher
-        dp.add_handler(CommandHandler("set", set,
-                                      pass_args=True,
-                                      pass_job_queue=True,
-                                      pass_chat_data=True))
-        dp.add_handler(CommandHandler("unset", unset, pass_chat_data=True))
+        dp.add_handler(CommandHandler("set", set))
+        dp.add_handler(CommandHandler("unset", unset))
         self.updater.start_polling()
 
         #  we want to check if the bot returns a message to the same chat after a period of time
@@ -80,10 +78,10 @@ class Testtimerbot(unittest.TestCase):
         chat = self.cg.get_chat()
 
         # let's generate some updates we can use
-        u1 = self.mg.get_message(chat=chat, text="/set")
-        u2 = self.mg.get_message(chat=chat, text="/set -20")
-        u3 = self.mg.get_message(chat=chat, text="/set 6")
-        u4 = self.mg.get_message(chat=chat, text="/unset")
+        u1 = self.mg.get_message(chat=chat, text="/set", parse_mode="HTML")
+        u2 = self.mg.get_message(chat=chat, text="/set -20", parse_mode="HTML")
+        u3 = self.mg.get_message(chat=chat, text="/set 6", parse_mode="HTML")
+        u4 = self.mg.get_message(chat=chat, text="/unset", parse_mode="HTML")
 
         # first check some errors
         self.bot.insertUpdate(u1)
@@ -92,7 +90,7 @@ class Testtimerbot(unittest.TestCase):
         data = self.bot.sent_messages
         self.assertEqual(len(data), 3)
         self.assertEqual(data[0]['text'], "Usage: /set <seconds>")
-        self.assertEqual(data[1]['text'], 'Sorry we can not go back to future!')
+        self.assertEqual(data[1]['text'], 'Sorry we can not go back to the past!')
         self.assertEqual(data[2]['text'], 'You have no active timer')
 
         # now check if setting and unsetting works (within timer limit)
