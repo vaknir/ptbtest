@@ -32,7 +32,7 @@ class EntityParser():
 
     def __init__(self):
         pass
-
+    # TODO write a parser for MarkdownV2
     @staticmethod
     def parse_markdown(message):
         """
