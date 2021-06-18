@@ -139,7 +139,7 @@ class Mockbot(TelegramObject):
             if kwargs.get("reply_markup"):
                 reply_markup = kwargs.get("reply_markup")
                 if isinstance(reply_markup, ReplyMarkup):
-                    data["reply_markup"] = reply_markup.to_json()
+                    data["reply_markup"] = reply_markup.to_dict()
                 else:
                     data["reply_markup"] = reply_markup
             data["method"] = func.__name__
@@ -204,7 +204,7 @@ class Mockbot(TelegramObject):
         chat_id,
         text,
         parse_mode=None,
-        disable_web_page_preview=None,
+        disable_web_page_preview: bool=None,
         disable_notification=False,
         reply_to_message_id=None,
         reply_markup=None,
@@ -215,7 +215,7 @@ class Mockbot(TelegramObject):
 
         if parse_mode:
             data["parse_mode"] = parse_mode
-        if disable_web_page_preview:
+        if disable_web_page_preview is not None:
             data["disable_web_page_preview"] = disable_web_page_preview
 
         return data
@@ -710,9 +710,7 @@ class Mockbot(TelegramObject):
         self._sendmessages.append(data)
 
     def getChatMember(self, chat_id, user_id, timeout=None, **kwargs):
-        data = {"chat_id": chat_id, "user_id": user_id}
-
-        data["method"] = "getChatMember"
+        data = {"chat_id": chat_id, "user_id": user_id, "method": "getChatMember"}
 
         self._sendmessages.append(data)
 

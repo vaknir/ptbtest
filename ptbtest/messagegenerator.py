@@ -42,13 +42,16 @@ from telegram import (
     Location,
     Message,
     PhotoSize,
+    Poll,
+    PollOption,
+    PollAnswer,
     Sticker,
     User,
     Venue,
     Video,
     Voice,
 )
-
+from telegram.constants import POLL_QUIZ, POLL_REGULAR
 
 class MessageGenerator(PtbGenerator):
     """
@@ -183,6 +186,7 @@ class MessageGenerator(PtbGenerator):
             channel=False,
             bot=None,
             media_group_id=None,
+            poll=None,
             **kwargs
     ):
         """
@@ -280,6 +284,11 @@ class MessageGenerator(PtbGenerator):
             voice,
             caption,
         )
+        if poll:
+            if poll in {POLL_QUIZ, POLL_REGULAR}:
+                poll = self._get_poll(poll)
+            else:
+                raise BadMessageException("Poll can be either regular or quiz")
 
         return Message(
             message_id=id or next(self.idgen),
@@ -316,6 +325,7 @@ class MessageGenerator(PtbGenerator):
             forward_date=forward_date,
             bot=bot or self.bot,
             media_group_id=media_group_id,
+            poll=poll,
         )
 
     def _handle_attachments(
@@ -690,3 +700,32 @@ class MessageGenerator(PtbGenerator):
             duration=randint(1, 120),
             title="Some song",
         )
+
+    def _get_poll(self, poll_type):
+        import uuid
+        from random import randint
+        if poll_type == POLL_QUIZ:
+            return Poll(
+                id=str(uuid.uuid4()),
+                question="Are you human?",
+                options=[PollOption("Yes", 2),
+                         PollOption("No", 5)],
+                total_voter_count=7,
+                is_closed=False,
+                is_anonymous=True,
+                type=POLL_QUIZ,
+                correct_option_id=0,
+                allows_multiple_answers=False,
+            )
+        else:
+            return Poll(
+                id=str(uuid.uuid4()),
+                question="Are you human?",
+                options=[PollOption("Yes", 2),
+                         PollOption("No", 5)],
+                total_voter_count=7,
+                is_closed=False,
+                is_anonymous=True,
+                type=POLL_REGULAR,
+                allows_multiple_answers=False,
+            )
