@@ -7,7 +7,7 @@ with codecs.open("readme.rst", "r", "utf-8") as fd:
 
     setup(
         name='ptb_unittest',
-        version='1.1',
+        version='1.1.1',
         packages=find_packages(),
         url='https://github.com/GauthamramRavichandran/ptbtest',
         license='GNU General Public License v3.0',
