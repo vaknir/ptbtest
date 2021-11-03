@@ -7,7 +7,6 @@ from telegram.ext import CommandHandler
 from telegram.ext import ConversationHandler
 from telegram.ext import Filters
 from telegram.ext import MessageHandler
-from telegram.ext import RegexHandler
 from telegram.ext import Updater
 
 from ptbtest import ChatGenerator
@@ -29,9 +28,8 @@ class TestConversationbot2(unittest.TestCase):
         self.ug = UserGenerator()
         self.mg = MessageGenerator(self.bot)
         self.updater = Updater(bot=self.bot)  # type: ignore
-
-    def test_conversation(self):
-        CHOOSING, TYPING_REPLY, TYPING_CHOICE = range(3)
+        # storing in states to access in other test func.
+        self.states = CHOOSING, TYPING_REPLY, TYPING_CHOICE = range(3)
 
         reply_keyboard = [[KeyboardButton('Age'), KeyboardButton('Favourite colour')],
                           [KeyboardButton('Number of siblings'), KeyboardButton('Something else...')],
@@ -93,9 +91,9 @@ class TestConversationbot2(unittest.TestCase):
             entry_points=[CommandHandler('start', start)],
             states={
                 CHOOSING: [MessageHandler(Filters.regex('^(Age|Favourite colour|Number of siblings)$'),
-                                        regular_choice),
+                                          regular_choice),
                            MessageHandler(Filters.regex('^Something else...$'),
-                                        custom_choice),
+                                          custom_choice),
                            ],
                 TYPING_CHOICE: [MessageHandler(Filters.text,
                                                regular_choice),
@@ -108,20 +106,27 @@ class TestConversationbot2(unittest.TestCase):
         )
         dp = self.updater.dispatcher
         dp.add_handler(conv_handler)
-        self.updater.start_polling()
+        self.addCleanup(self.updater.stop)
 
+    def test_conversation(self):
+        self.updater.start_polling()
+        conv_handler = self.updater.dispatcher.handlers[0][0]  # since we added a conv handler at group 0 first position
         # We are going to test a conversationhandler. Since this is tied in with user and chat we need to
         # create both for consistancy
         user = self.ug.get_user()
         chat = self.cg.get_chat(type="group")
         user2 = self.ug.get_user()
-        chat2 = self.cg.get_chat(user=user)
+        chat2 = self.cg.get_chat(user=user2)
 
         # let's start the conversation
         u = self.mg.get_message(user=user, chat=chat, text="/start", parse_mode="HTML")
         self.bot.insertUpdate(u)
         data = self.bot.sent_messages[-1]
         self.assertRegex(data['text'], r"Doctor Botter\. I will")
+        # check if user is in correct state
+        key = conv_handler._get_key(u)
+        self.assertEqual(conv_handler.conversations[key], self.states[0])
+
         u = self.mg.get_message(user=user, chat=chat, text="Age")
         self.bot.insertUpdate(u)
         data = self.bot.sent_messages[-1]
@@ -132,6 +137,10 @@ class TestConversationbot2(unittest.TestCase):
         self.bot.insertUpdate(u)
         data = self.bot.sent_messages[-1]
         self.assertRegex(data['text'], r"Doctor Botter\. I will")
+        # check if user is in correct state
+        key = conv_handler._get_key(u)
+        self.assertEqual(conv_handler.conversations[key], self.states[0])
+
         self.assertEqual(data['chat_id'], chat2.id)
         self.assertNotEqual(data['chat_id'], chat.id)
         # and cancels his conv.
@@ -139,6 +148,8 @@ class TestConversationbot2(unittest.TestCase):
         self.bot.insertUpdate(u)
         data = self.bot.sent_messages[-1]
         self.assertRegex(data['text'], r"Until next time!")
+        # Once conv. is ended, user's state will be removed
+        self.assertNotIn(key, conv_handler.conversations)
 
         # cary on with first user
         u = self.mg.get_message(user=user, chat=chat, text="23")
@@ -162,8 +173,6 @@ class TestConversationbot2(unittest.TestCase):
         data = self.bot.sent_messages[-1]
         self.assertRegex(data['text'], r"programming skill - High")
         self.assertRegex(data['text'], r"Age - 23")
-
-        self.updater.stop()
 
 
 if __name__ == '__main__':
