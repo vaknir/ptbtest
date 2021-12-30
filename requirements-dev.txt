@@ -2,3 +2,5 @@ coverage
 nose
 python-telegram-bot
 pre-commit-hooks
+allure-pytest
+pytest-cov
