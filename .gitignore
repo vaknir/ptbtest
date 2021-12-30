@@ -73,6 +73,9 @@ target/
 # Jupyter Notebook
 .ipynb_checkpoints
 
+# vscode
+.vscode
+
 # pyenv
 .python-version
 
@@ -92,4 +95,3 @@ ENV/
 
 # Rope project settings
 .ropeproject
-
