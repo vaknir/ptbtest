@@ -19,20 +19,17 @@
 # You should have received a copy of the GNU Lesser Public License
 # along with this program.  If not, see [http://www.gnu.org/licenses/].
 from __future__ import absolute_import
+from ptbtest import Mockbot
+from telegram.ext import Updater, CommandHandler
+from telegram import User, Message, Chat, Update
+from telegram import TelegramError
+from telegram import InlineQueryResult
+from telegram import InlineKeyboardMarkup, InlineKeyboardButton
+from telegram import ChatAction
+import telegram
+import unittest
 import sys
 sys.path.append("..")
-
-import unittest
-
-import telegram
-from telegram import ChatAction
-from telegram import InlineKeyboardMarkup, InlineKeyboardButton
-from telegram import InlineQueryResult
-from telegram import TelegramError
-from telegram import User, Message, Chat, Update
-from telegram.ext import Updater, CommandHandler
-
-from ptbtest import Mockbot
 
 
 class TestMockbot(unittest.TestCase):
@@ -246,6 +243,7 @@ class TestMockbot(unittest.TestCase):
         self.assertEqual(data['method'], "leaveChat")
 
     def test_sendAudio(self):
+        import uuid
         self.mockbot.sendAudio(
             1,
             "123",
@@ -281,7 +279,7 @@ class TestMockbot(unittest.TestCase):
 
     def test_sendDocument(self):
         self.mockbot.sendDocument(
-            1, "45", filename="jaja.docx", caption="good doc")
+            chat_id=1, document="45", filename="jaja.docx", caption="good doc")
         data = self.mockbot.sent_messages[-1]
 
         self.assertEqual(data['method'], "sendDocument")
@@ -324,7 +322,7 @@ class TestMockbot(unittest.TestCase):
         self.assertEqual(data['chat_id'], 1)
         self.assertEqual(data['text'], "test")
         self.assertEqual(
-            eval(data['reply_markup'])['inline_keyboard'][1][0][
+            data['reply_markup']['inline_keyboard'][1][0][
                 'callback_data'], "test2")
 
     def test_sendPhoto(self):

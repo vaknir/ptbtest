@@ -1,15 +1,13 @@
 from __future__ import absolute_import
-import sys
-sys.path.append("..")
-
-import unittest
-
-from ptbtest import (BadBotException, BadChatException, BadUserException,
-                     BadMarkupException, BadMessageException)
-from ptbtest import Mockbot
-from ptbtest import (UserGenerator, MessageGenerator, ChatGenerator)
 from telegram import (Audio, Contact, Document, Location, Sticker, User,
                       Update, Venue, Video, Voice, PhotoSize, Message)
+from ptbtest import (UserGenerator, MessageGenerator, ChatGenerator)
+from ptbtest import Mockbot
+from ptbtest import (BadBotException, BadChatException, BadUserException,
+                     BadMarkupException, BadMessageException)
+import unittest
+import sys
+sys.path.append("..")
 
 
 class TestMessageGeneratorCore(unittest.TestCase):
@@ -220,6 +218,7 @@ class TestMessageGeneratorForwards(unittest.TestCase):
         self.cg = ChatGenerator()
 
     def test_forwarded_message(self):
+        import datetime
         u1 = self.ug.get_user()
         u2 = self.ug.get_user()
         c = self.cg.get_chat(type="group")
@@ -229,8 +228,7 @@ class TestMessageGeneratorForwards(unittest.TestCase):
         self.assertEqual(u.message.forward_from.id, u2.id)
         self.assertNotEqual(u.message.from_user.id, u.message.forward_from.id)
         self.assertEqual(u.message.text, "This is a test")
-        self.assertIsInstance(u.message.forward_date, int)
-        import datetime
+        self.assertIsInstance(u.message.forward_date, datetime.datetime)
         self.mg.get_message(
             forward_from=u2, forward_date=datetime.datetime.now())
 
@@ -240,6 +238,7 @@ class TestMessageGeneratorForwards(unittest.TestCase):
                 user=u1, chat=c, forward_from=u3, text="This is a test")
 
     def test_forwarded_channel_message(self):
+        import datetime
         c = self.cg.get_chat(type="channel")
         us = self.ug.get_user()
         u = self.mg.get_message(
@@ -249,13 +248,13 @@ class TestMessageGeneratorForwards(unittest.TestCase):
         self.assertEqual(u.message.forward_from.id, us.id)
         self.assertEqual(u.message.text, "This is a test")
         self.assertIsInstance(u.message.forward_from_message_id, int)
-        self.assertIsInstance(u.message.forward_date, int)
+        self.assertIsInstance(u.message.forward_date, datetime.datetime)
 
         u = self.mg.get_message(text="This is a test", forward_from_chat=c)
         self.assertNotEqual(u.message.from_user.id, u.message.forward_from.id)
         self.assertIsInstance(u.message.forward_from, User)
         self.assertIsInstance(u.message.forward_from_message_id, int)
-        self.assertIsInstance(u.message.forward_date, int)
+        self.assertIsInstance(u.message.forward_date, datetime.datetime)
 
         with self.assertRaises(BadChatException):
             c = "Not a Chat"
@@ -308,7 +307,7 @@ class TestMessageGeneratorStatusMessages(unittest.TestCase):
         u = self.mg.get_message(chat=chat, new_chat_photo=True)
         self.assertIsInstance(u.message.new_chat_photo, list)
         self.assertIsInstance(u.message.new_chat_photo[0], PhotoSize)
-        photo = [PhotoSize("2", 1, 1, file_size=3)]
+        photo = [PhotoSize("2", "unid", 1, 1, file_size=3)]
         u = self.mg.get_message(chat=chat, new_chat_photo=photo)
         self.assertEqual(len(u.message.new_chat_photo), 1)
 
@@ -389,9 +388,11 @@ class TestMessageGeneratorAttachments(unittest.TestCase):
             self.mg.get_message(contact="contact")
 
     def test_voice(self):
-        voice = Voice("idyouknow", 12)
+        voice = Voice("idyouknow", "uuid",  12, 30)
         u = self.mg.get_message(voice=voice)
         self.assertEqual(voice.file_id, u.message.voice.file_id)
+
+        self.assertEqual(voice.duration, u.message.voice.duration)
 
         cap = "voice file"
         u = self.mg.get_message(voice=voice, caption=cap)
@@ -404,9 +405,12 @@ class TestMessageGeneratorAttachments(unittest.TestCase):
             self.mg.get_message(voice="voice")
 
     def test_video(self):
-        video = Video("idyouknow", 200, 200, 10)
+        video = Video(file_id="idyouknow", file_unique_id="unid",
+                      width=200, height=200, duration=10)
         u = self.mg.get_message(video=video)
         self.assertEqual(video.file_id, u.message.video.file_id)
+
+        self.assertEqual(video.file_unique_id, u.message.video.file_unique_id)
 
         cap = "video file"
         u = self.mg.get_message(video=video, caption=cap)
@@ -419,7 +423,7 @@ class TestMessageGeneratorAttachments(unittest.TestCase):
             self.mg.get_message(video="video")
 
     def test_sticker(self):
-        sticker = Sticker("idyouknow", 30, 30)
+        sticker = Sticker("idyouknow", "unid", 30, 30, is_animated=False)
         u = self.mg.get_message(sticker=sticker)
         self.assertEqual(sticker.file_id, u.message.sticker.file_id)
 
@@ -435,7 +439,8 @@ class TestMessageGeneratorAttachments(unittest.TestCase):
             self.mg.get_message(sticker="sticker")
 
     def test_document(self):
-        document = Document("idyouknow", file_name="test.pdf")
+        document = Document(file_id="idyouknow",
+                            file_unique_id="unid", file_name="test.pdf")
         u = self.mg.get_message(document=document)
         self.assertEqual(document.file_id, u.message.document.file_id)
 
@@ -451,7 +456,7 @@ class TestMessageGeneratorAttachments(unittest.TestCase):
             self.mg.get_message(document="document")
 
     def test_audio(self):
-        audio = Audio("idyouknow", 23)
+        audio = Audio("idyouknow", "unid", 23)
         u = self.mg.get_message(audio=audio)
         self.assertEqual(audio.file_id, u.message.audio.file_id)
 
@@ -466,7 +471,7 @@ class TestMessageGeneratorAttachments(unittest.TestCase):
             self.mg.get_message(audio="audio")
 
     def test_photo(self):
-        photo = [PhotoSize("2", 1, 1, file_size=3)]
+        photo = [PhotoSize("2", "unid", 1, 1, file_size=3)]
         u = self.mg.get_message(photo=photo)
         self.assertEqual(photo[0].file_size, u.message.photo[0].file_size)
 

@@ -24,6 +24,7 @@ import functools
 import logging
 import warnings
 
+import uuid
 import time
 
 from telegram import User, ReplyMarkup, TelegramObject
@@ -57,7 +58,8 @@ class Mockbot(TelegramObject):
 
         A call to ``editMessageText(text="test 2", inline_message_id=404, disable_web_page_preview=True)``::
 
-        {'inline_message_id': 404, 'text': 'test 2', 'method': 'editMessageText', 'disable_web_page_preview': True}
+        {'inline_message_id': 404, 'text': 'test 2',
+            'method': 'editMessageText', 'disable_web_page_preview': True}
     Parameters:
         username (Optional[str]): Username for this bot. Defaults to 'MockBot'"""
 
@@ -134,7 +136,8 @@ class Mockbot(TelegramObject):
                 data["reply_to_message_id"] = kwargs.get("reply_to_message_id")
 
             if kwargs.get("disable_notification"):
-                data["disable_notification"] = kwargs.get("disable_notification")
+                data["disable_notification"] = kwargs.get(
+                    "disable_notification")
 
             if kwargs.get("reply_markup"):
                 reply_markup = kwargs.get("reply_markup")
@@ -166,7 +169,8 @@ class Mockbot(TelegramObject):
             dat["forward_from_message_id"] = dat.pop("message_id", None)
             cid = dat.pop("from_chat_id", None)
             if cid:
-                dat["forward_from_chat"] = self.cg.get_chat(cid=cid, type="channel")
+                dat["forward_from_chat"] = self.cg.get_chat(
+                    cid=cid, type="channel")
             dat.pop("inline_message_id", None)
             dat.pop("performer", "")
             dat.pop("title", "")
@@ -204,7 +208,7 @@ class Mockbot(TelegramObject):
         chat_id,
         text,
         parse_mode=None,
-        disable_web_page_preview: bool=None,
+        disable_web_page_preview: bool = None,
         disable_notification=False,
         reply_to_message_id=None,
         reply_markup=None,
@@ -276,7 +280,8 @@ class Mockbot(TelegramObject):
         **kwargs
     ):
         data = {"chat_id": chat_id, "audio": audio}
-        data["audio2"] = {"file_id": audio}
+        data["audio2"] = {"file_id": audio,
+                          "file_unique_id": str(uuid.uuid4())}
         if duration:
             data["duration"] = duration
             data["audio2"]["duration"] = duration
@@ -305,10 +310,11 @@ class Mockbot(TelegramObject):
         timeout=None,
         **kwargs
     ):
+        import uuid
         data = {
             "chat_id": chat_id,
             "document": document,
-            "document2": {"file_id": document},
+            "document2": {"file_id": document, "file_unique_id": str(uuid.uuid4())},
         }
         if filename:
             data["filename"] = filename
@@ -350,7 +356,8 @@ class Mockbot(TelegramObject):
         timeout=None,
         **kwargs
     ):
-        data = {"chat_id": chat_id, "video": video, "video2": {"file_id": video}}
+        data = {"chat_id": chat_id, "video": video,
+                "video2": {"file_id": video, "file_unique_id": str(uuid.uuid4())}}
 
         if duration:
             data["duration"] = duration
@@ -373,7 +380,8 @@ class Mockbot(TelegramObject):
         timeout=None,
         **kwargs
     ):
-        data = {"chat_id": chat_id, "voice": voice, "voice2": {"file_id": voice}}
+        data = {"chat_id": chat_id, "voice": voice,
+                "voice2": {"file_id": voice, "file_unique_id": str(uuid.uuid4())}}
 
         if duration:
             data["duration"] = duration
@@ -673,7 +681,7 @@ class Mockbot(TelegramObject):
         read_latency=2.0,
         **kwargs
     ):
-        return self.updates
+        return self._updates
 
     def setWebhook(self, webhook_url=None, certificate=None, timeout=None, **kwargs):
         return None
@@ -710,7 +718,8 @@ class Mockbot(TelegramObject):
         self._sendmessages.append(data)
 
     def getChatMember(self, chat_id, user_id, timeout=None, **kwargs):
-        data = {"chat_id": chat_id, "user_id": user_id, "method": "getChatMember"}
+        data = {"chat_id": chat_id, "user_id": user_id,
+                "method": "getChatMember"}
 
         self._sendmessages.append(data)
 
@@ -779,10 +788,11 @@ class Mockbot(TelegramObject):
     def de_json(data, bot):
         data = super(Mockbot, Mockbot).de_json(data, bot)
 
-        return Mockbot(**data)
+        return data
 
     def to_dict(self):
-        data = {"id": self.id, "username": self.username, "first_name": self.username}
+        data = {"id": self.id, "username": self.username,
+                "first_name": self.username}
 
         if self.last_name:
             data["last_name"] = self.last_name
