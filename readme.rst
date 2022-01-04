@@ -1,5 +1,8 @@
 |Documentation Status| |Version| |Supported Py| |License|
 
+[![CircleCI](https://circleci.com/gh/vaknir/ptbtest/tree/moving_to_pytest.svg?style=svg)](https://circleci.com/gh/vaknir/ptbtest/tree/moving_to_pytest)
+
+
 ptb unittest
 ============
 
