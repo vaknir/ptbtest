@@ -40,6 +40,8 @@ jobs:
           name: Install requriemnt
           command: pip install -r requirements.txt
                    pip install -r requirements-dev.txt
+      - allure/install:
+          version: 2.13.1
       - run:
           name: Run tests
           # This assumes pytest is installed via the install-package step above
