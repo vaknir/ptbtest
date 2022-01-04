@@ -1,5 +1,5 @@
-[![Documentation Status](https://readthedocs.org/projects/ptbtestsuite/badge/?version=master)](http://ptbtestsuite.readthedocs.io/en/master/?badge=master) 
-[![PyPI](https://img.shields.io/pypi/v/ptb_unittest.svg)](https://pypi.python.org/pypi/ptb_unittest) [![PyPI](https://img.shields.io/pypi/pyversions/ptb_unittest.svg)](https://pypi.python.org/pypi/ptb_unittest) [![PyPI](https://img.shields.io/pypi/l/ptb_unittest.svg)](https://pypi.python.org/pypi/ptbtest)
+[![Documentation Status](https://readthedocs.org/projects/ptbtestsuite/badge/?version=master)](http://ptbtestsuite.readthedocs.io/en/master/?badge=master)
+[![PyPI](https://img.shields.io/pypi/v/ptb_unittest.svg)](https://pypi.python.org/pypi/ptb_unittest) [![PyPI](https://img.shields.io/pypi/pyversions/ptb_unittest.svg)](https://pypi.python.org/pypi/ptb_unittest) [![PyPI](https://img.shields.io/pypi/l/ptb_unittest.svg)](https://pypi.python.org/pypi/ptbtest) [![CircleCI](https://circleci.com/gh/vaknir/ptbtest/tree/moving_to_pytest.svg?style=svg)](https://circleci.com/gh/vaknir/ptbtest/tree/moving_to_pytest)
 
 # ptb unittest
 ## a testsuite for [Python telegram bot](https://github.com/python-telegram-bot/python-telegram-bot/)
