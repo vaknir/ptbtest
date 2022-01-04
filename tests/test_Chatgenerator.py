@@ -19,103 +19,120 @@
 # You should have received a copy of the GNU Lesser Public License
 # along with this program.  If not, see [http://www.gnu.org/licenses/].
 from __future__ import absolute_import
+
+import pytest
+from ptbtest import UserGenerator
+from ptbtest import ChatGenerator
+import unittest
 import sys
+
+from telegram.chat import Chat
 sys.path.append("..")
 
-import unittest
-from ptbtest import ChatGenerator
-from ptbtest import UserGenerator
+
+cg = ChatGenerator()
+
+@pytest.mark.chat
+def test_without_parameter():
+    c = cg.get_chat()
+
+    assert isinstance(c.id, int)
+    assert c.id > 0
+    assert c.username == c.first_name + c.last_name
+    assert c.type == "private"
 
 
-class TestChatGenerator(unittest.TestCase):
-    def setUp(self):
-        self.cg = ChatGenerator()
+@pytest.mark.chat
+def test_group_chat():
+    c = cg.get_chat(type="group")
+    assert c.id < 0
+    assert c.type == "group"
+    assert c.all_members_are_administrators == False
+    assert isinstance(c.title, str)
 
-    def test_without_parameter(self):
-        c = self.cg.get_chat()
+@pytest.mark.chat
+def test_group_all_members_are_administrators():
+    c = cg.get_chat(type="group", all_members_are_administrators=True)
+    assert c.type == "group"
+    assert c.all_members_are_administrators == True
 
-        self.assertIsInstance(c.id, int)
-        self.assertTrue(c.id > 0)
-        self.assertEqual(c.username, c.first_name + c.last_name)
-        self.assertEqual(c.type, "private")
+@pytest.mark.chat
+def test_group_chat_with_group_name():
+    c = cg.get_chat(type="group", title="My Group")
 
-    def test_group_chat(self):
-        c = self.cg.get_chat(type="group")
-
-        self.assertTrue(c.id < 0)
-        self.assertEqual(c.type, "group")
-        self.assertFalse(c.all_members_are_administrators)
-        self.assertIsInstance(c.title, str)
-
-    def test_group_all_members_are_administrators(self):
-        c = self.cg.get_chat(type="group", all_members_are_administrators=True)
-        self.assertEqual(c.type, "group")
-        self.assertTrue(c.all_members_are_administrators)
-
-    def test_group_chat_with_group_name(self):
-        c = self.cg.get_chat(type="group", title="My Group")
-
-        self.assertEqual(c.title, "My Group")
-
-    def test_private_from_user(self):
-        u = UserGenerator().get_user()
-        c = self.cg.get_chat(user=u)
-
-        self.assertEqual(u.id, c.id)
-        self.assertEqual(c.username, c.first_name + c.last_name)
-        self.assertEqual(u.username, c.username)
-        self.assertEqual(c.type, "private")
-
-    def test_supergroup(self):
-        c = self.cg.get_chat(type="supergroup")
-
-        self.assertTrue(c.id < 0)
-        self.assertEqual(c.type, "supergroup")
-        self.assertIsInstance(c.title, str)
-        self.assertTrue(c.username, "".join(c.title.split()))
-
-    def test_supergroup_with_title(self):
-        c = self.cg.get_chat(type="supergroup", title="Awesome Group")
-
-        self.assertEqual(c.title, "Awesome Group")
-        self.assertEqual(c.username, "AwesomeGroup")
-
-    def test_supergroup_with_username(self):
-        c = self.cg.get_chat(type="supergroup", username="mygroup")
-
-        self.assertEqual(c.username, "mygroup")
-
-    def test_supergroup_with_username_title(self):
-        c = self.cg.get_chat(
-            type="supergroup", username="mygroup", title="Awesome Group")
-
-        self.assertEqual(c.title, "Awesome Group")
-        self.assertEqual(c.username, "mygroup")
-
-    def test_channel(self):
-        c = self.cg.get_chat(type="channel")
-
-        self.assertIsInstance(c.title, str)
-        self.assertEqual(c.type, "channel")
-        self.assertTrue(c.username, "".join(c.title.split()))
-
-    def test_channel_with_title(self):
-        c = self.cg.get_chat(type="channel", title="Awesome Group")
-        self.assertEqual(c.title, "Awesome Group")
-        self.assertEqual(c.username, "AwesomeGroup")
-
-    def test_channel_with_username(self):
-        c = self.cg.get_chat(type="channel", username="mygroup")
-
-        self.assertEqual(c.username, "mygroup")
-
-    def test_channel_with_username_title(self):
-        c = self.cg.get_chat(
-            type="channel", username="mygroup", title="Awesome Channel")
-
-        self.assertEqual(c.title, "Awesome Channel")
-        self.assertEqual(c.username, "mygroup")
+    assert c.title == "My Group"
 
 
-if __name__ == '__main__':
-    unittest.main()
+@pytest.mark.chat
+def test_private_from_user():
+    u = UserGenerator().get_user()
+    c = cg.get_chat(user=u)
+
+    assert u.id == c.id
+    assert c.username == c.first_name + c.last_name
+    assert u.username == c.username
+    assert c.type == "private"
+
+
+@pytest.mark.chat
+def test_supergroup():
+    c = cg.get_chat(type="supergroup")
+
+    assert c.id < 0
+    assert c.type == "supergroup"
+    assert isinstance(c.title, str)
+    assert c.username == "".join(c.title.split())
+
+
+@pytest.mark.chat
+def test_supergroup_with_title():
+    c = cg.get_chat(type="supergroup", title="Awesome Group")
+
+    assert c.title == "Awesome Group"
+    assert c.username == "AwesomeGroup"
+
+@pytest.mark.chat
+def test_supergroup_with_username():
+    c = cg.get_chat(type="supergroup", username="mygroup")
+
+    assert c.username == "mygroup"
+
+
+@pytest.mark.chat
+def test_supergroup_with_username_title():
+    c = cg.get_chat(
+        type="supergroup", username="mygroup", title="Awesome Group")
+
+    assert c.title == "Awesome Group"
+    assert c.username == "mygroup"
+
+
+@pytest.mark.chat
+def test_channel():
+    c = cg.get_chat(type="channel")
+
+    assert isinstance(c.title, str)
+    assert c.type == "channel"
+    assert c.username == "".join(c.title.split())
+
+
+@pytest.mark.chat
+def test_channel_with_title():
+    c = cg.get_chat(type="channel", title="Awesome Group")
+    assert c.title == "Awesome Group"
+    assert c.username =="AwesomeGroup"
+
+@pytest.mark.chat
+def test_channel_with_username():
+    c = cg.get_chat(type="channel", username="mygroup")
+
+    assert c.username == "mygroup"
+
+
+@pytest.mark.chat
+def test_channel_with_username_title():
+    c = cg.get_chat(
+        type="channel", username="mygroup", title="Awesome Channel")
+
+    assert c.title == "Awesome Channel"
+    assert c.username == "mygroup"

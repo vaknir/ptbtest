@@ -19,115 +19,124 @@
 # You should have received a copy of the GNU Lesser Public License
 # along with this program.  If not, see [http://www.gnu.org/licenses/].
 from __future__ import absolute_import
+from re import match
+from telegram import User
+from telegram import Update
+from telegram import Location
+from telegram import InlineQuery
+from telegram import ChosenInlineResult
+from ptbtest import UserGenerator
+from ptbtest import Mockbot
+from ptbtest import InlineQueryGenerator
+from ptbtest.errors import (BadBotException, BadUserException)
+import pytest
 import sys
 sys.path.append("..")
 
-import unittest
 
-from ptbtest.errors import (BadBotException, BadUserException)
-from ptbtest import InlineQueryGenerator
-from ptbtest import Mockbot
-from ptbtest import UserGenerator
-from telegram import ChosenInlineResult
-from telegram import InlineQuery
-from telegram import Location
-from telegram import Update
-from telegram import User
+iqg = InlineQueryGenerator()
 
 
-class TestInlineQueryGenerator(unittest.TestCase):
-    def setUp(self):
-        self.iqg = InlineQueryGenerator()
+@pytest.mark.inlinequery
+def test_standard():
+    u = iqg.get_inline_query()
+    assert isinstance(u, Update)
+    assert isinstance(u.inline_query, InlineQuery)
+    assert isinstance(u.inline_query.from_user, User)
 
-    def test_standard(self):
-        u = self.iqg.get_inline_query()
-        self.assertIsInstance(u, Update)
-        self.assertIsInstance(u.inline_query, InlineQuery)
-        self.assertIsInstance(u.inline_query.from_user, User)
+    bot = Mockbot(username="testbot")
+    iqg2 = InlineQueryGenerator(bot=bot)
+    assert bot.username == iqg2.bot.username
 
-        bot = Mockbot(username="testbot")
-        iqg2 = InlineQueryGenerator(bot=bot)
-        self.assertEqual(bot.username, iqg2.bot.username)
-
-        with self.assertRaises(BadBotException):
-            iqg3 = InlineQueryGenerator(bot="bot")
-
-    def test_with_user(self):
-        ug = UserGenerator()
-        user = ug.get_user()
-        u = self.iqg.get_inline_query(user=user)
-        self.assertEqual(u.inline_query.from_user.id, user.id)
-
-        with self.assertRaises(BadUserException):
-            self.iqg.get_inline_query(user="user")
-
-    def test_query(self):
-        u = self.iqg.get_inline_query(query="test")
-        self.assertEqual(u.inline_query.query, "test")
-
-        with self.assertRaisesRegexp(AttributeError, "query"):
-            self.iqg.get_inline_query(query=True)
-
-    def test_offset(self):
-        u = self.iqg.get_inline_query(offset="44")
-        self.assertEqual(u.inline_query.offset, "44")
-
-        with self.assertRaisesRegexp(AttributeError, "offset"):
-            self.iqg.get_inline_query(offset=True)
-
-    def test_location(self):
-        u = self.iqg.get_inline_query(location=True)
-        self.assertIsInstance(u.inline_query.location, Location)
-
-        loc = Location(23.0, 90.0)
-        u = self.iqg.get_inline_query(location=loc)
-        self.assertEqual(u.inline_query.location.longitude, 23.0)
-
-        with self.assertRaisesRegexp(AttributeError, "telegram\.Location"):
-            self.iqg.get_inline_query(location="location")
+    with pytest.raises(BadBotException, match="Invalid ptbtest.Mockbot object"):
+        iqg3 = InlineQueryGenerator(bot="bot")
 
 
-class TestChosenInlineResult(unittest.TestCase):
-    def setUp(self):
-        self.iqc = InlineQueryGenerator()
+@pytest.mark.inlinequery
+def test_with_user():
+    ug = UserGenerator()
+    user = ug.get_user()
+    u = iqg.get_inline_query(user=user)
+    assert u.inline_query.from_user.id == user.id
 
-    def test_chosen_inline_result(self):
-        u = self.iqc.get_chosen_inline_result("testid")
-        self.assertIsInstance(u, Update)
-        self.assertIsInstance(u.chosen_inline_result, ChosenInlineResult)
-        self.assertIsInstance(u.chosen_inline_result.from_user, User)
-        self.assertEqual(u.chosen_inline_result.result_id, "testid")
-
-        with self.assertRaisesRegexp(AttributeError, "chosen_inline_result"):
-            self.iqc.get_chosen_inline_result()
-
-    def test_with_location(self):
-        u = self.iqc.get_chosen_inline_result("testid", location=True)
-        self.assertIsInstance(u.chosen_inline_result.location, Location)
-        loc = Location(23.0, 90.0)
-        u = self.iqc.get_chosen_inline_result("testid", location=loc)
-        self.assertEqual(u.chosen_inline_result.location.longitude, 23.0)
-
-        with self.assertRaisesRegexp(AttributeError, "telegram\.Location"):
-            self.iqc.get_chosen_inline_result("test_id", location="loc")
-
-    def test_inline_message_id(self):
-        u = self.iqc.get_chosen_inline_result("test")
-        self.assertIsInstance(u.chosen_inline_result.inline_message_id, str)
-
-        u = self.iqc.get_chosen_inline_result(
-            "test", inline_message_id="myidilike")
-        self.assertEqual(u.chosen_inline_result.inline_message_id, "myidilike")
-
-    def test_user(self):
-        ug = UserGenerator()
-        user = ug.get_user()
-        u = self.iqc.get_chosen_inline_result("test", user=user)
-        self.assertEqual(u.chosen_inline_result.from_user.id, user.id)
-
-        with self.assertRaises(BadUserException):
-            self.iqc.get_chosen_inline_result("test", user="user")
+    with pytest.raises(BadUserException, match="Invalid telegram.User object"):
+        iqg.get_inline_query(user="user")
 
 
-if __name__ == '__main__':
-    unittest.main()
+@pytest.mark.inlinequery
+def test_query():
+    u = iqg.get_inline_query(query="test")
+    assert u.inline_query.query == "test"
+
+    with pytest.raises(AttributeError, match="query"):
+        iqg.get_inline_query(query=True)
+
+
+@pytest.mark.inlinequery
+def test_offset():
+    u = iqg.get_inline_query(offset="44")
+    assert u.inline_query.offset == "44"
+
+    with pytest.raises(AttributeError, match="offset"):
+        iqg.get_inline_query(offset=True)
+
+
+@pytest.mark.inlinequery
+def test_location():
+    u = iqg.get_inline_query(location=True)
+    assert isinstance(u.inline_query.location, Location)
+
+    loc = Location(23.0, 90.0)
+    u = iqg.get_inline_query(location=loc)
+    assert u.inline_query.location.longitude == 23.0
+
+    with pytest.raises(AttributeError, match="telegram.Location"):
+        iqg.get_inline_query(location="location")
+
+
+iqc = InlineQueryGenerator()
+
+
+@pytest.mark.inlinequery
+def test_chosen_inline_result():
+    u = iqc.get_chosen_inline_result("testid")
+    assert isinstance(u, Update)
+    assert isinstance(u.chosen_inline_result, ChosenInlineResult)
+    assert isinstance(u.chosen_inline_result.from_user, User)
+    assert u.chosen_inline_result.result_id == "testid"
+
+    with pytest.raises(AttributeError, match="chosen_inline_result"):
+        iqc.get_chosen_inline_result()
+
+
+@pytest.mark.inlinequery
+def test_with_location():
+    u = iqc.get_chosen_inline_result("testid", location=True)
+    assert isinstance(u.chosen_inline_result.location, Location)
+    loc = Location(23.0, 90.0)
+    u = iqc.get_chosen_inline_result("testid", location=loc)
+    assert u.chosen_inline_result.location.longitude == 23.0
+
+    with pytest.raises(AttributeError, match="telegram.Location"):
+        iqc.get_chosen_inline_result("test_id", location="loc")
+
+
+@pytest.mark.inlinequery
+def test_inline_message_id():
+    u = iqc.get_chosen_inline_result("test")
+    assert isinstance(u.chosen_inline_result.inline_message_id, str)
+
+    u = iqc.get_chosen_inline_result(
+        "test", inline_message_id="myidilike")
+    assert u.chosen_inline_result.inline_message_id == "myidilike"
+
+
+@pytest.mark.inlinequery
+def test_user():
+    ug = UserGenerator()
+    user = ug.get_user()
+    u = iqc.get_chosen_inline_result("test", user=user)
+    assert u.chosen_inline_result.from_user.id == user.id
+
+    with pytest.raises(BadUserException, match="Invalid telegram.User object"):
+        iqc.get_chosen_inline_result("test", user="user")
