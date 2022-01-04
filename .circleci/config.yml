@@ -87,7 +87,9 @@ jobs:
           version: 2.17.2
       - run:
           name: Run tests
-          command: pytest -k "inlinequery or chat" -v --alluredir="/tmp/allure_results/"
+          command: pytest -k "inlinequery or chat" -v --alluredir="/tmp/allure_results/"  --junitxml=test-/tmp/allure_results/junit.xml
+      - store_test_results:
+          path: test-/tmp/allure_results/junit.xml
       - allure-updated/report:
           target-path: /tmp/allure/
           results-path: /tmp/allure_results/
