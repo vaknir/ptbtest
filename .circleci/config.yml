@@ -43,8 +43,7 @@ jobs:
       - run:
           name: Run tests
           # This assumes pytest is installed via the install-package step above
-          command: pytest -k "inlinequery or chat" -v --alluredir="/tmp/allure_results"
-                   allure serve /tmp/allure_results
+          command: pytest -k "inlinequery or chat"
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
