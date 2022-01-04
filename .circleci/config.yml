@@ -93,6 +93,7 @@ jobs:
           name: Java version
           command: java --version
 
+      - run:
           name: Install requriemnt
           command: pip install -r requirements.txt
                    pip install -r requirements-dev.txt
