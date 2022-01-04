@@ -88,7 +88,7 @@ jobs:
       - run:
           name: install tox
           command:
-            pip3 install tox tox-pyenv && pyenv local 3.8
+            pip3 install tox tox-pyenv && pyenv local 3.9.7
                   
       - run:
           name: Install requriemnt
