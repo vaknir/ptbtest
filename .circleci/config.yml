@@ -9,7 +9,6 @@ orbs:
   # Orb commands and jobs help you with common scripting around a language/tool
   # so you dont have to copy and paste it everywhere.
   # See the orb documentation here: https://circleci.com/developer/orbs/orb/circleci/python
-  python: cimg/python:3.9.1-browsers
   allure-updated:
     orbs:
     commands:
@@ -75,7 +74,7 @@ jobs:
     # The executor is the environment in which the steps below will be executed - below will use a python 3.8 container
     # Change the version below to your required version of python
     docker:
-      - image: cimg/python:3.8
+      - image: cimg/python:3.9.1-browsers
 
     resource_class: small
     # Checkout the code as the first step. This is a dedicated CircleCI step.
