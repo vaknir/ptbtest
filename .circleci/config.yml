@@ -93,13 +93,13 @@ jobs:
           name: Install requriemnt
           command: pip install -r requirements.txt
                    pip install -r requirements-dev.txt
-      - allure/install:
+      - allure-updated/install:
           version: 2.13.1
       - run:
           name: Run tests
           # This assumes pytest is installed via the install-package step above
           command: pytest -k "inlinequery or chat" -v --alluredir="/tmp/allure_results"
-      - allure/report:
+      - allure-updated/report:
           target-path: /tmp/allure_results
           results-path: /tmp/allure_results
 
