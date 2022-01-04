@@ -70,10 +70,10 @@ jobs:
   test-ptb: # This is the name of the job, feel free to change it to better match what you're trying to do!
     machine:
       image: ubuntu-2004:202111-01
-    dependencies:
-      override:
-        - pip install tox tox-pyenv
-        - pyenv local 3.7.12 3.8.11 3.9.7      
+    # dependencies:
+    #   override:
+    #     - pip install tox tox-pyenv
+    #     - pyenv local 3.7.12 3.8.11 3.9.7      
     # These next lines defines a Docker executors: https://circleci.com/docs/2.0/executor-types/
     # You can specify an image from Dockerhub or use one of the convenience images from CircleCI's Developer Hub
     # A list of available CircleCI Docker convenience images are available here: https://circleci.com/developer/images/image/cimg/python
@@ -85,6 +85,11 @@ jobs:
     resource_class: small
     steps:
       - checkout
+      - run:
+          name: install tox
+          command:
+            pip install tox tox-pyenv
+            pyenv local 3.7.12 3.8.11 3.9.7      
       - run:
           name: Install requriemnt
           command: pip install -r requirements.txt
