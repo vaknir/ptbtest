@@ -82,14 +82,14 @@ jobs:
     # docker:
     #   - image: cimg/python:3.9.1-browsers
 
-    resource_class: small
+    resource_class: medium
     steps:
       - checkout
       - run:
           name: install tox
           command:
-            pip3 install tox tox-pyenv
-            pyenv local 3.7.12 3.8.11 3.9.7      
+            pip3 install tox tox-pyenv && pyenv local 3.7.12 3.8.11 3.9.7
+                  
       - run:
           name: Install requriemnt
           command: pip install -r requirements.txt
