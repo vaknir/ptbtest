@@ -98,3 +98,11 @@ ENV/
 
 #pytest
 tests/pytest_results
+
+@@ -98,3 +98,6 @@ ENV/
+
+#pytest
+tests/pytest_results
+
+# allure
+allure-results/
