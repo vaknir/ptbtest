@@ -1,0 +1,76 @@
+{
+  "uid" : "b5d3e123b528dd57",
+  "name" : "test_group_chat_with_group_name",
+  "fullName" : "tests.test_Chatgenerator#test_group_chat_with_group_name",
+  "historyId" : "5410b325c1c7dedfb7202234d1e11b60",
+  "time" : {
+    "start" : 1641383684346,
+    "stop" : 1641383684346,
+    "duration" : 0
+  },
+  "status" : "passed",
+  "flaky" : false,
+  "newFailed" : false,
+  "beforeStages" : [ ],
+  "afterStages" : [ ],
+  "labels" : [ {
+    "name" : "tag",
+    "value" : "chat"
+  }, {
+    "name" : "parentSuite",
+    "value" : "tests"
+  }, {
+    "name" : "suite",
+    "value" : "test_Chatgenerator"
+  }, {
+    "name" : "host",
+    "value" : "fv-az47-7"
+  }, {
+    "name" : "thread",
+    "value" : "2790-MainThread"
+  }, {
+    "name" : "framework",
+    "value" : "pytest"
+  }, {
+    "name" : "language",
+    "value" : "cpython3"
+  }, {
+    "name" : "package",
+    "value" : "tests.test_Chatgenerator"
+  }, {
+    "name" : "resultFormat",
+    "value" : "allure2"
+  } ],
+  "parameters" : [ ],
+  "links" : [ ],
+  "hidden" : false,
+  "retry" : false,
+  "extra" : {
+    "severity" : "normal",
+    "retries" : [ ],
+    "categories" : [ ],
+    "history" : {
+      "statistic" : {
+        "failed" : 0,
+        "broken" : 0,
+        "skipped" : 0,
+        "passed" : 2,
+        "unknown" : 0,
+        "total" : 2
+      },
+      "items" : [ {
+        "uid" : "6082358929c02db9",
+        "reportUrl" : "https://vaknir.github.io/ptbtest/15//#testresult/6082358929c02db9",
+        "status" : "passed",
+        "time" : {
+          "start" : 1641383679228,
+          "stop" : 1641383679228,
+          "duration" : 0
+        }
+      } ]
+    },
+    "tags" : [ "chat" ]
+  },
+  "source" : "b5d3e123b528dd57.json",
+  "parameterValues" : [ ]
+}

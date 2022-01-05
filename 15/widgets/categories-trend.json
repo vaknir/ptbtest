@@ -3,4 +3,9 @@
   "reportUrl" : "https://vaknir.github.io/ptbtest/15/",
   "reportName" : "Allure Report with history",
   "data" : { }
+}, {
+  "buildOrder" : 15,
+  "reportUrl" : "https://vaknir.github.io/ptbtest/15/",
+  "reportName" : "Allure Report with history",
+  "data" : { }
 } ]
