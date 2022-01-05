@@ -1,0 +1,56 @@
+{
+  "uid" : "916fdd9ea44c9a14",
+  "name" : "test_group_all_members_are_administrators",
+  "fullName" : "tests.test_Chatgenerator#test_group_all_members_are_administrators",
+  "historyId" : "45a1db467c9f38e22fce2772a83a8e59",
+  "time" : {
+    "start" : 1641383679227,
+    "stop" : 1641383679227,
+    "duration" : 0
+  },
+  "status" : "passed",
+  "flaky" : false,
+  "newFailed" : false,
+  "beforeStages" : [ ],
+  "afterStages" : [ ],
+  "labels" : [ {
+    "name" : "tag",
+    "value" : "chat"
+  }, {
+    "name" : "parentSuite",
+    "value" : "tests"
+  }, {
+    "name" : "suite",
+    "value" : "test_Chatgenerator"
+  }, {
+    "name" : "host",
+    "value" : "fv-az47-7"
+  }, {
+    "name" : "thread",
+    "value" : "2760-MainThread"
+  }, {
+    "name" : "framework",
+    "value" : "pytest"
+  }, {
+    "name" : "language",
+    "value" : "cpython3"
+  }, {
+    "name" : "package",
+    "value" : "tests.test_Chatgenerator"
+  }, {
+    "name" : "resultFormat",
+    "value" : "allure2"
+  } ],
+  "parameters" : [ ],
+  "links" : [ ],
+  "hidden" : false,
+  "retry" : false,
+  "extra" : {
+    "severity" : "normal",
+    "retries" : [ ],
+    "categories" : [ ],
+    "tags" : [ "chat" ]
+  },
+  "source" : "916fdd9ea44c9a14.json",
+  "parameterValues" : [ ]
+}

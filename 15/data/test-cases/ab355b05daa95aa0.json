@@ -1,0 +1,56 @@
+{
+  "uid" : "ab355b05daa95aa0",
+  "name" : "test_inline_message_id",
+  "fullName" : "tests.test_Inlinequerygenerator#test_inline_message_id",
+  "historyId" : "c68d103a5e9a12345ec641027d4df4b3",
+  "time" : {
+    "start" : 1641383679252,
+    "stop" : 1641383679252,
+    "duration" : 0
+  },
+  "status" : "passed",
+  "flaky" : false,
+  "newFailed" : false,
+  "beforeStages" : [ ],
+  "afterStages" : [ ],
+  "labels" : [ {
+    "name" : "tag",
+    "value" : "inlinequery"
+  }, {
+    "name" : "parentSuite",
+    "value" : "tests"
+  }, {
+    "name" : "suite",
+    "value" : "test_Inlinequerygenerator"
+  }, {
+    "name" : "host",
+    "value" : "fv-az47-7"
+  }, {
+    "name" : "thread",
+    "value" : "2760-MainThread"
+  }, {
+    "name" : "framework",
+    "value" : "pytest"
+  }, {
+    "name" : "language",
+    "value" : "cpython3"
+  }, {
+    "name" : "package",
+    "value" : "tests.test_Inlinequerygenerator"
+  }, {
+    "name" : "resultFormat",
+    "value" : "allure2"
+  } ],
+  "parameters" : [ ],
+  "links" : [ ],
+  "hidden" : false,
+  "retry" : false,
+  "extra" : {
+    "severity" : "normal",
+    "retries" : [ ],
+    "categories" : [ ],
+    "tags" : [ "inlinequery" ]
+  },
+  "source" : "ab355b05daa95aa0.json",
+  "parameterValues" : [ ]
+}

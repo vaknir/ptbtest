@@ -1,0 +1,86 @@
+{
+  "uid" : "457990f6ab90c233",
+  "name" : "test_left_chat_member",
+  "fullName" : "tests.test_Messagegenerator.TestMessageGeneratorStatusMessages#test_left_chat_member",
+  "historyId" : "e6cc7d7ed7d0ec4baecb4b32c639723b",
+  "time" : {
+    "start" : 1641383679260,
+    "stop" : 1641383679260,
+    "duration" : 0
+  },
+  "status" : "passed",
+  "flaky" : false,
+  "newFailed" : false,
+  "beforeStages" : [ {
+    "name" : "unittest_setUpClass_fixture_TestMessageGeneratorStatusMessages",
+    "time" : {
+      "start" : 1641383679259,
+      "stop" : 1641383679259,
+      "duration" : 0
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false,
+    "hasContent" : false
+  } ],
+  "afterStages" : [ {
+    "name" : "unittest_setUpClass_fixture_TestMessageGeneratorStatusMessages::0",
+    "time" : {
+      "start" : 1641383679266,
+      "stop" : 1641383679266,
+      "duration" : 0
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false,
+    "hasContent" : false
+  } ],
+  "labels" : [ {
+    "name" : "parentSuite",
+    "value" : "tests"
+  }, {
+    "name" : "suite",
+    "value" : "test_Messagegenerator"
+  }, {
+    "name" : "subSuite",
+    "value" : "TestMessageGeneratorStatusMessages"
+  }, {
+    "name" : "host",
+    "value" : "fv-az47-7"
+  }, {
+    "name" : "thread",
+    "value" : "2760-MainThread"
+  }, {
+    "name" : "framework",
+    "value" : "pytest"
+  }, {
+    "name" : "language",
+    "value" : "cpython3"
+  }, {
+    "name" : "package",
+    "value" : "tests.test_Messagegenerator"
+  }, {
+    "name" : "resultFormat",
+    "value" : "allure2"
+  } ],
+  "parameters" : [ ],
+  "links" : [ ],
+  "hidden" : false,
+  "retry" : false,
+  "extra" : {
+    "severity" : "normal",
+    "retries" : [ ],
+    "categories" : [ ],
+    "tags" : [ ]
+  },
+  "source" : "457990f6ab90c233.json",
+  "parameterValues" : [ ]
+}
