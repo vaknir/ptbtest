@@ -1,0 +1,94 @@
+{
+  "uid" : "56593495dc5aa33",
+  "name" : "test_channel_with_title",
+  "fullName" : "tests.test_Chatgenerator#test_channel_with_title",
+  "historyId" : "727ccd9175300a07a9b0de16f99a34e1",
+  "time" : {
+    "start" : 1641383796310,
+    "stop" : 1641383796310,
+    "duration" : 0
+  },
+  "status" : "passed",
+  "flaky" : false,
+  "newFailed" : false,
+  "beforeStages" : [ ],
+  "afterStages" : [ ],
+  "labels" : [ {
+    "name" : "tag",
+    "value" : "chat"
+  }, {
+    "name" : "parentSuite",
+    "value" : "tests"
+  }, {
+    "name" : "suite",
+    "value" : "test_Chatgenerator"
+  }, {
+    "name" : "host",
+    "value" : "fv-az82-408"
+  }, {
+    "name" : "thread",
+    "value" : "2882-MainThread"
+  }, {
+    "name" : "framework",
+    "value" : "pytest"
+  }, {
+    "name" : "language",
+    "value" : "cpython3"
+  }, {
+    "name" : "package",
+    "value" : "tests.test_Chatgenerator"
+  }, {
+    "name" : "resultFormat",
+    "value" : "allure2"
+  } ],
+  "parameters" : [ ],
+  "links" : [ ],
+  "hidden" : false,
+  "retry" : false,
+  "extra" : {
+    "severity" : "normal",
+    "retries" : [ ],
+    "categories" : [ ],
+    "history" : {
+      "statistic" : {
+        "failed" : 0,
+        "broken" : 0,
+        "skipped" : 0,
+        "passed" : 4,
+        "unknown" : 0,
+        "total" : 4
+      },
+      "items" : [ {
+        "uid" : "e452272972492344",
+        "reportUrl" : "https://vaknir.github.io/ptbtest/16//#testresult/e452272972492344",
+        "status" : "passed",
+        "time" : {
+          "start" : 1641383787280,
+          "stop" : 1641383787280,
+          "duration" : 0
+        }
+      }, {
+        "uid" : "de0133df47a5a061",
+        "reportUrl" : "https://vaknir.github.io/ptbtest/15//#testresult/de0133df47a5a061",
+        "status" : "passed",
+        "time" : {
+          "start" : 1641383685985,
+          "stop" : 1641383685985,
+          "duration" : 0
+        }
+      }, {
+        "uid" : "422642c3b5d51daf",
+        "reportUrl" : "https://vaknir.github.io/ptbtest/15//#testresult/422642c3b5d51daf",
+        "status" : "passed",
+        "time" : {
+          "start" : 1641383679237,
+          "stop" : 1641383679237,
+          "duration" : 0
+        }
+      } ]
+    },
+    "tags" : [ "chat" ]
+  },
+  "source" : "56593495dc5aa33.json",
+  "parameterValues" : [ ]
+}

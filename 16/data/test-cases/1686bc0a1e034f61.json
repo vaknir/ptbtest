@@ -1,0 +1,124 @@
+{
+  "uid" : "1686bc0a1e034f61",
+  "name" : "test_sendChatAction",
+  "fullName" : "tests.test_Mockbot.TestMockbot#test_sendChatAction",
+  "historyId" : "3be3a30be9b51f2b5210b5804ba6292c",
+  "time" : {
+    "start" : 1641383796377,
+    "stop" : 1641383796378,
+    "duration" : 1
+  },
+  "status" : "passed",
+  "flaky" : false,
+  "newFailed" : false,
+  "beforeStages" : [ {
+    "name" : "unittest_setUpClass_fixture_TestMockbot",
+    "time" : {
+      "start" : 1641383796361,
+      "stop" : 1641383796361,
+      "duration" : 0
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false,
+    "hasContent" : false,
+    "stepsCount" : 0
+  } ],
+  "afterStages" : [ {
+    "name" : "unittest_setUpClass_fixture_TestMockbot::0",
+    "time" : {
+      "start" : 1641383796382,
+      "stop" : 1641383796382,
+      "duration" : 0
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false,
+    "hasContent" : false,
+    "stepsCount" : 0
+  } ],
+  "labels" : [ {
+    "name" : "parentSuite",
+    "value" : "tests"
+  }, {
+    "name" : "suite",
+    "value" : "test_Mockbot"
+  }, {
+    "name" : "subSuite",
+    "value" : "TestMockbot"
+  }, {
+    "name" : "host",
+    "value" : "fv-az82-408"
+  }, {
+    "name" : "thread",
+    "value" : "2882-MainThread"
+  }, {
+    "name" : "framework",
+    "value" : "pytest"
+  }, {
+    "name" : "language",
+    "value" : "cpython3"
+  }, {
+    "name" : "package",
+    "value" : "tests.test_Mockbot"
+  }, {
+    "name" : "resultFormat",
+    "value" : "allure2"
+  } ],
+  "parameters" : [ ],
+  "links" : [ ],
+  "hidden" : false,
+  "retry" : false,
+  "extra" : {
+    "severity" : "normal",
+    "retries" : [ ],
+    "categories" : [ ],
+    "history" : {
+      "statistic" : {
+        "failed" : 0,
+        "broken" : 0,
+        "skipped" : 0,
+        "passed" : 4,
+        "unknown" : 0,
+        "total" : 4
+      },
+      "items" : [ {
+        "uid" : "6dd7fe978c0ca716",
+        "reportUrl" : "https://vaknir.github.io/ptbtest/16//#testresult/6dd7fe978c0ca716",
+        "status" : "passed",
+        "time" : {
+          "start" : 1641383787325,
+          "stop" : 1641383787325,
+          "duration" : 0
+        }
+      }, {
+        "uid" : "56ae5ec8467d34e6",
+        "reportUrl" : "https://vaknir.github.io/ptbtest/15//#testresult/56ae5ec8467d34e6",
+        "status" : "passed",
+        "time" : {
+          "start" : 1641383686027,
+          "stop" : 1641383686027,
+          "duration" : 0
+        }
+      }, {
+        "uid" : "fc68c80039fc89e5",
+        "reportUrl" : "https://vaknir.github.io/ptbtest/15//#testresult/fc68c80039fc89e5",
+        "status" : "passed",
+        "time" : {
+          "start" : 1641383679283,
+          "stop" : 1641383679283,
+          "duration" : 0
+        }
+      } ]
+    },
+    "tags" : [ ]
+  },
+  "source" : "1686bc0a1e034f61.json",
+  "parameterValues" : [ ]
+}

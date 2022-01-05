@@ -1,0 +1,124 @@
+{
+  "uid" : "f0279173d56a67ee",
+  "name" : "test_new_chat_title",
+  "fullName" : "tests.test_Messagegenerator.TestMessageGeneratorStatusMessages#test_new_chat_title",
+  "historyId" : "f9b4bb2359b1781f22f7c3c68b95ff37",
+  "time" : {
+    "start" : 1641383796354,
+    "stop" : 1641383796355,
+    "duration" : 1
+  },
+  "status" : "passed",
+  "flaky" : false,
+  "newFailed" : false,
+  "beforeStages" : [ {
+    "name" : "unittest_setUpClass_fixture_TestMessageGeneratorStatusMessages",
+    "time" : {
+      "start" : 1641383796343,
+      "stop" : 1641383796344,
+      "duration" : 1
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false,
+    "hasContent" : false,
+    "stepsCount" : 0
+  } ],
+  "afterStages" : [ {
+    "name" : "unittest_setUpClass_fixture_TestMessageGeneratorStatusMessages::0",
+    "time" : {
+      "start" : 1641383796355,
+      "stop" : 1641383796355,
+      "duration" : 0
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false,
+    "hasContent" : false,
+    "stepsCount" : 0
+  } ],
+  "labels" : [ {
+    "name" : "parentSuite",
+    "value" : "tests"
+  }, {
+    "name" : "suite",
+    "value" : "test_Messagegenerator"
+  }, {
+    "name" : "subSuite",
+    "value" : "TestMessageGeneratorStatusMessages"
+  }, {
+    "name" : "host",
+    "value" : "fv-az82-408"
+  }, {
+    "name" : "thread",
+    "value" : "2882-MainThread"
+  }, {
+    "name" : "framework",
+    "value" : "pytest"
+  }, {
+    "name" : "language",
+    "value" : "cpython3"
+  }, {
+    "name" : "package",
+    "value" : "tests.test_Messagegenerator"
+  }, {
+    "name" : "resultFormat",
+    "value" : "allure2"
+  } ],
+  "parameters" : [ ],
+  "links" : [ ],
+  "hidden" : false,
+  "retry" : false,
+  "extra" : {
+    "severity" : "normal",
+    "retries" : [ ],
+    "categories" : [ ],
+    "history" : {
+      "statistic" : {
+        "failed" : 0,
+        "broken" : 0,
+        "skipped" : 0,
+        "passed" : 4,
+        "unknown" : 0,
+        "total" : 4
+      },
+      "items" : [ {
+        "uid" : "dd922ed3e6ae05aa",
+        "reportUrl" : "https://vaknir.github.io/ptbtest/16//#testresult/dd922ed3e6ae05aa",
+        "status" : "passed",
+        "time" : {
+          "start" : 1641383787308,
+          "stop" : 1641383787309,
+          "duration" : 1
+        }
+      }, {
+        "uid" : "e1a76d6486a2172",
+        "reportUrl" : "https://vaknir.github.io/ptbtest/15//#testresult/e1a76d6486a2172",
+        "status" : "passed",
+        "time" : {
+          "start" : 1641383686011,
+          "stop" : 1641383686012,
+          "duration" : 1
+        }
+      }, {
+        "uid" : "cff9883a3af39f8d",
+        "reportUrl" : "https://vaknir.github.io/ptbtest/15//#testresult/cff9883a3af39f8d",
+        "status" : "passed",
+        "time" : {
+          "start" : 1641383679265,
+          "stop" : 1641383679266,
+          "duration" : 1
+        }
+      } ]
+    },
+    "tags" : [ ]
+  },
+  "source" : "f0279173d56a67ee.json",
+  "parameterValues" : [ ]
+}
