@@ -24,10 +24,10 @@ jobs:
         if: always()
         #id: allure-report
         with:
-          allure_results: allure_results
+          allure_results: /home/runner/work/ptbtest/ptbtest/allure_results
           #gh_pages: gh-pages
           #allure_report: allure-report
-          allure_history: allure-history
+          allure_history: /home/runner/work/ptbtest/ptbtest/allure_results/allure-history
           keep_reports: 20
 
       - name: Deploy report to Github Pages
@@ -62,4 +62,4 @@ jobs:
           flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
       - name: Test with pytest
         run: |
-          pytest -k "inlinequery or chat" -v --alluredir="allure_results"  --junitxml=test-allure_results/unit.xml
+          pytest -k "inlinequery or chat" -v --alluredir="/home/runner/work/ptbtest/ptbtest/allure_results"  --junitxml="/home/runner/work/ptbtest/ptbtest/allure_results/allure_results/unit.xml
