@@ -1,0 +1,10 @@
+[ {
+  "name" : "GitHub Actions",
+  "type" : "github",
+  "url" : "https://vaknir.github.io/ptbtest",
+  "buildOrder" : 16,
+  "buildName" : "GitHub Actions Run #1658209306",
+  "buildUrl" : "https://github.com/vaknir/ptbtest/actions/runs/1658209306",
+  "reportName" : "Allure Report with history",
+  "reportUrl" : "https://vaknir.github.io/ptbtest/16/"
+} ]

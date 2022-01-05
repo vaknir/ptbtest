@@ -1,0 +1,85 @@
+{
+  "uid" : "2596f2a4fddf9b65",
+  "name" : "test_with_user",
+  "fullName" : "tests.test_Inlinequerygenerator#test_with_user",
+  "historyId" : "89c9f78767e26bc80e8cad9d79cb260e",
+  "time" : {
+    "start" : 1641383787286,
+    "stop" : 1641383787286,
+    "duration" : 0
+  },
+  "status" : "passed",
+  "flaky" : false,
+  "newFailed" : false,
+  "beforeStages" : [ ],
+  "afterStages" : [ ],
+  "labels" : [ {
+    "name" : "tag",
+    "value" : "inlinequery"
+  }, {
+    "name" : "parentSuite",
+    "value" : "tests"
+  }, {
+    "name" : "suite",
+    "value" : "test_Inlinequerygenerator"
+  }, {
+    "name" : "host",
+    "value" : "fv-az121-657"
+  }, {
+    "name" : "thread",
+    "value" : "2769-MainThread"
+  }, {
+    "name" : "framework",
+    "value" : "pytest"
+  }, {
+    "name" : "language",
+    "value" : "cpython3"
+  }, {
+    "name" : "package",
+    "value" : "tests.test_Inlinequerygenerator"
+  }, {
+    "name" : "resultFormat",
+    "value" : "allure2"
+  } ],
+  "parameters" : [ ],
+  "links" : [ ],
+  "hidden" : false,
+  "retry" : false,
+  "extra" : {
+    "severity" : "normal",
+    "retries" : [ ],
+    "categories" : [ ],
+    "history" : {
+      "statistic" : {
+        "failed" : 0,
+        "broken" : 0,
+        "skipped" : 0,
+        "passed" : 3,
+        "unknown" : 0,
+        "total" : 3
+      },
+      "items" : [ {
+        "uid" : "6d131a892d73c75e",
+        "reportUrl" : "https://vaknir.github.io/ptbtest/15//#testresult/6d131a892d73c75e",
+        "status" : "passed",
+        "time" : {
+          "start" : 1641383685990,
+          "stop" : 1641383685991,
+          "duration" : 1
+        }
+      }, {
+        "uid" : "cfff4e472dcfc18e",
+        "reportUrl" : "https://vaknir.github.io/ptbtest/15//#testresult/cfff4e472dcfc18e",
+        "status" : "passed",
+        "time" : {
+          "start" : 1641383679243,
+          "stop" : 1641383679244,
+          "duration" : 1
+        }
+      } ]
+    },
+    "tags" : [ "inlinequery" ]
+  },
+  "source" : "2596f2a4fddf9b65.json",
+  "parameterValues" : [ ]
+}
