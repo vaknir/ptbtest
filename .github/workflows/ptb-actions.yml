@@ -62,4 +62,4 @@ jobs:
           flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
       - name: Test with pytest
         run: |
-          pytest -k "inlinequery or chat" -v --alluredir="/home/runner/work/ptbtest/ptbtest/allure_results"  --junitxml="/home/runner/work/ptbtest/ptbtest/allure_results/allure_results/unit.xml
+          pytest -k "inlinequery or chat" -v --alluredir="/home/runner/work/ptbtest/ptbtest/allure_results"  --junitxml="/home/runner/work/ptbtest/ptbtest/allure_results/allure_results/unit.xml"
