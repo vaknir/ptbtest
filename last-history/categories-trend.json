@@ -4,6 +4,11 @@
   "reportName" : "Allure Report with history",
   "data" : { }
 }, {
+  "buildOrder" : 16,
+  "reportUrl" : "https://vaknir.github.io/ptbtest/16/",
+  "reportName" : "Allure Report with history",
+  "data" : { }
+}, {
   "buildOrder" : 15,
   "reportUrl" : "https://vaknir.github.io/ptbtest/15/",
   "reportName" : "Allure Report with history",

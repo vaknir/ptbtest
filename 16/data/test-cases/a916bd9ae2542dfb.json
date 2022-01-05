@@ -1,0 +1,94 @@
+{
+  "uid" : "a916bd9ae2542dfb",
+  "name" : "test_inline_message_id",
+  "fullName" : "tests.test_Inlinequerygenerator#test_inline_message_id",
+  "historyId" : "c68d103a5e9a12345ec641027d4df4b3",
+  "time" : {
+    "start" : 1641383793757,
+    "stop" : 1641383793758,
+    "duration" : 1
+  },
+  "status" : "passed",
+  "flaky" : false,
+  "newFailed" : false,
+  "beforeStages" : [ ],
+  "afterStages" : [ ],
+  "labels" : [ {
+    "name" : "tag",
+    "value" : "inlinequery"
+  }, {
+    "name" : "parentSuite",
+    "value" : "tests"
+  }, {
+    "name" : "suite",
+    "value" : "test_Inlinequerygenerator"
+  }, {
+    "name" : "host",
+    "value" : "fv-az121-657"
+  }, {
+    "name" : "thread",
+    "value" : "2763-MainThread"
+  }, {
+    "name" : "framework",
+    "value" : "pytest"
+  }, {
+    "name" : "language",
+    "value" : "cpython3"
+  }, {
+    "name" : "package",
+    "value" : "tests.test_Inlinequerygenerator"
+  }, {
+    "name" : "resultFormat",
+    "value" : "allure2"
+  } ],
+  "parameters" : [ ],
+  "links" : [ ],
+  "hidden" : false,
+  "retry" : false,
+  "extra" : {
+    "severity" : "normal",
+    "retries" : [ ],
+    "categories" : [ ],
+    "history" : {
+      "statistic" : {
+        "failed" : 0,
+        "broken" : 0,
+        "skipped" : 0,
+        "passed" : 4,
+        "unknown" : 0,
+        "total" : 4
+      },
+      "items" : [ {
+        "uid" : "e6ecf20806f90da",
+        "reportUrl" : "https://vaknir.github.io/ptbtest/16//#testresult/e6ecf20806f90da",
+        "status" : "passed",
+        "time" : {
+          "start" : 1641383787295,
+          "stop" : 1641383787295,
+          "duration" : 0
+        }
+      }, {
+        "uid" : "70b89619c793c7fb",
+        "reportUrl" : "https://vaknir.github.io/ptbtest/15//#testresult/70b89619c793c7fb",
+        "status" : "passed",
+        "time" : {
+          "start" : 1641383685999,
+          "stop" : 1641383685999,
+          "duration" : 0
+        }
+      }, {
+        "uid" : "ab355b05daa95aa0",
+        "reportUrl" : "https://vaknir.github.io/ptbtest/15//#testresult/ab355b05daa95aa0",
+        "status" : "passed",
+        "time" : {
+          "start" : 1641383679252,
+          "stop" : 1641383679252,
+          "duration" : 0
+        }
+      } ]
+    },
+    "tags" : [ "inlinequery" ]
+  },
+  "source" : "a916bd9ae2542dfb.json",
+  "parameterValues" : [ ]
+}

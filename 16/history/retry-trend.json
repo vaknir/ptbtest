@@ -7,6 +7,14 @@
     "retry" : 0
   }
 }, {
+  "buildOrder" : 16,
+  "reportUrl" : "https://vaknir.github.io/ptbtest/16/",
+  "reportName" : "Allure Report with history",
+  "data" : {
+    "run" : 38,
+    "retry" : 0
+  }
+}, {
   "buildOrder" : 15,
   "reportUrl" : "https://vaknir.github.io/ptbtest/15/",
   "reportName" : "Allure Report with history",

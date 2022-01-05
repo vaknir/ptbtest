@@ -3,6 +3,13 @@
   "reportUrl" : "https://vaknir.github.io/ptbtest/16/",
   "reportName" : "Allure Report with history",
   "data" : {
+    "duration" : 68
+  }
+}, {
+  "buildOrder" : 16,
+  "reportUrl" : "https://vaknir.github.io/ptbtest/16/",
+  "reportName" : "Allure Report with history",
+  "data" : {
     "duration" : 61
   }
 }, {
