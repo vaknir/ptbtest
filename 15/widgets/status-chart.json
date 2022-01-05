@@ -1,380 +1,380 @@
 [ {
-  "uid" : "f403eaf9af6c3795",
-  "name" : "test_new_chat_title",
-  "time" : {
-    "start" : 1641383684394,
-    "stop" : 1641383684395,
-    "duration" : 1
-  },
-  "status" : "passed",
-  "severity" : "normal"
-}, {
-  "uid" : "1b07e9939001fe46",
-  "name" : "test_getChatMember",
-  "time" : {
-    "start" : 1641383684407,
-    "stop" : 1641383684408,
-    "duration" : 1
-  },
-  "status" : "passed",
-  "severity" : "normal"
-}, {
-  "uid" : "c425b1690985a319",
-  "name" : "test_new_chat_members",
-  "time" : {
-    "start" : 1641383684389,
-    "stop" : 1641383684390,
-    "duration" : 1
-  },
-  "status" : "passed",
-  "severity" : "normal"
-}, {
-  "uid" : "b5d3e123b528dd57",
-  "name" : "test_group_chat_with_group_name",
-  "time" : {
-    "start" : 1641383684346,
-    "stop" : 1641383684346,
-    "duration" : 0
-  },
-  "status" : "passed",
-  "severity" : "normal"
-}, {
-  "uid" : "3d6b0e55857f5b0f",
-  "name" : "test_offset",
-  "time" : {
-    "start" : 1641383684368,
-    "stop" : 1641383684369,
-    "duration" : 1
-  },
-  "status" : "passed",
-  "severity" : "normal"
-}, {
-  "uid" : "a956d7505ab0dbbc",
-  "name" : "test_with_chat_and_user",
-  "time" : {
-    "start" : 1641383684384,
-    "stop" : 1641383684384,
-    "duration" : 0
-  },
-  "status" : "passed",
-  "severity" : "normal"
-}, {
-  "uid" : "a097ef7fd4488d2f",
-  "name" : "test_channel_with_title",
-  "time" : {
-    "start" : 1641383684357,
-    "stop" : 1641383684357,
-    "duration" : 0
-  },
-  "status" : "passed",
-  "severity" : "normal"
-}, {
-  "uid" : "e20aec5522e37bd5",
-  "name" : "test_kickChatMember",
-  "time" : {
-    "start" : 1641383684412,
-    "stop" : 1641383684412,
-    "duration" : 0
-  },
-  "status" : "passed",
-  "severity" : "normal"
-}, {
-  "uid" : "3efe05a23dd5d4d4",
-  "name" : "test_getChatAdministrators",
-  "time" : {
-    "start" : 1641383684405,
-    "stop" : 1641383684405,
-    "duration" : 0
-  },
-  "status" : "passed",
-  "severity" : "normal"
-}, {
-  "uid" : "620284ce5b59b6e2",
-  "name" : "test_supergroup_with_username",
-  "time" : {
-    "start" : 1641383684352,
-    "stop" : 1641383684352,
-    "duration" : 0
-  },
-  "status" : "passed",
-  "severity" : "normal"
-}, {
-  "uid" : "5f5cd70e2849a32f",
-  "name" : "test_answerInlineQuery",
-  "time" : {
-    "start" : 1641383684401,
-    "stop" : 1641383684401,
-    "duration" : 0
-  },
-  "status" : "passed",
-  "severity" : "normal"
-}, {
-  "uid" : "3eff5d911e555988",
-  "name" : "test_new_chat_photo",
-  "time" : {
-    "start" : 1641383684391,
-    "stop" : 1641383684392,
-    "duration" : 1
-  },
-  "status" : "passed",
-  "severity" : "normal"
-}, {
-  "uid" : "38fdfaaa932e5a19",
-  "name" : "test_chosen_inline_result",
-  "time" : {
-    "start" : 1641383684372,
-    "stop" : 1641383684373,
-    "duration" : 1
-  },
-  "status" : "passed",
-  "severity" : "normal"
-}, {
-  "uid" : "8a4dc4e251f785f2",
-  "name" : "test_getChat",
-  "time" : {
-    "start" : 1641383684403,
-    "stop" : 1641383684403,
-    "duration" : 0
-  },
-  "status" : "passed",
-  "severity" : "normal"
-}, {
-  "uid" : "786ff9de84b324f6",
-  "name" : "test_with_location",
-  "time" : {
-    "start" : 1641383684374,
-    "stop" : 1641383684374,
-    "duration" : 0
-  },
-  "status" : "passed",
-  "severity" : "normal"
-}, {
-  "uid" : "167a92d6c7f94ace",
-  "name" : "test_leaveChat",
-  "time" : {
-    "start" : 1641383684414,
-    "stop" : 1641383684414,
-    "duration" : 0
-  },
-  "status" : "passed",
-  "severity" : "normal"
-}, {
-  "uid" : "178370f2dc091b5e",
-  "name" : "test_inline_message_id",
-  "time" : {
-    "start" : 1641383684376,
-    "stop" : 1641383684376,
-    "duration" : 0
-  },
-  "status" : "passed",
-  "severity" : "normal"
-}, {
-  "uid" : "94d460402e09aa76",
-  "name" : "test_query",
-  "time" : {
-    "start" : 1641383684367,
-    "stop" : 1641383684367,
-    "duration" : 0
-  },
-  "status" : "passed",
-  "severity" : "normal"
-}, {
-  "uid" : "1fd5882e5a062faa",
-  "name" : "test_left_chat_member",
-  "time" : {
-    "start" : 1641383684387,
-    "stop" : 1641383684387,
-    "duration" : 0
-  },
-  "status" : "passed",
-  "severity" : "normal"
-}, {
-  "uid" : "76b006adeb685c63",
-  "name" : "test_supergroup_with_title",
-  "time" : {
-    "start" : 1641383684350,
-    "stop" : 1641383684351,
-    "duration" : 1
-  },
-  "status" : "passed",
-  "severity" : "normal"
-}, {
-  "uid" : "8ba925de8a0dac7c",
-  "name" : "test_channel_with_username_title",
-  "time" : {
-    "start" : 1641383684360,
-    "stop" : 1641383684360,
-    "duration" : 0
-  },
-  "status" : "passed",
-  "severity" : "normal"
-}, {
-  "uid" : "449e136553084679",
-  "name" : "test_standard",
-  "time" : {
-    "start" : 1641383684362,
-    "stop" : 1641383684363,
-    "duration" : 1
-  },
-  "status" : "passed",
-  "severity" : "normal"
-}, {
-  "uid" : "489b64ffe2e58c92",
-  "name" : "test_channel_with_username",
-  "time" : {
-    "start" : 1641383684359,
-    "stop" : 1641383684359,
-    "duration" : 0
-  },
-  "status" : "passed",
-  "severity" : "normal"
-}, {
-  "uid" : "b2d2768a15d2104e",
-  "name" : "test_without_parameter",
-  "time" : {
-    "start" : 1641383684339,
-    "stop" : 1641383684339,
-    "duration" : 0
-  },
-  "status" : "passed",
-  "severity" : "normal"
-}, {
-  "uid" : "98d71206079b0e03",
-  "name" : "test_location",
-  "time" : {
-    "start" : 1641383684370,
-    "stop" : 1641383684371,
-    "duration" : 1
-  },
-  "status" : "passed",
-  "severity" : "normal"
-}, {
-  "uid" : "be7be7dbbdf95065",
-  "name" : "test_sendChatAction",
-  "time" : {
-    "start" : 1641383684416,
-    "stop" : 1641383684416,
-    "duration" : 0
-  },
-  "status" : "passed",
-  "severity" : "normal"
-}, {
-  "uid" : "bb5254dd48c27e02",
-  "name" : "test_group_chat",
-  "time" : {
-    "start" : 1641383684342,
-    "stop" : 1641383684342,
-    "duration" : 0
-  },
-  "status" : "passed",
-  "severity" : "normal"
-}, {
-  "uid" : "b1ac9bbbdd4fedaa",
-  "name" : "test_with_user",
-  "time" : {
-    "start" : 1641383684365,
-    "stop" : 1641383684365,
-    "duration" : 0
-  },
-  "status" : "passed",
-  "severity" : "normal"
-}, {
-  "uid" : "86a8f32aa78130cb",
-  "name" : "test_with_chat",
-  "time" : {
-    "start" : 1641383684380,
-    "stop" : 1641383684381,
-    "duration" : 1
-  },
-  "status" : "passed",
-  "severity" : "normal"
-}, {
-  "uid" : "2bb383781064536a",
-  "name" : "test_unbanChatMember",
-  "time" : {
-    "start" : 1641383684418,
-    "stop" : 1641383684418,
-    "duration" : 0
-  },
-  "status" : "passed",
-  "severity" : "normal"
-}, {
-  "uid" : "4f022f2ff4b5053",
-  "name" : "test_supergroup_with_username_title",
-  "time" : {
-    "start" : 1641383684354,
-    "stop" : 1641383684354,
-    "duration" : 0
-  },
-  "status" : "passed",
-  "severity" : "normal"
-}, {
-  "uid" : "d5760fe6abd1f29c",
-  "name" : "test_user",
-  "time" : {
-    "start" : 1641383684378,
-    "stop" : 1641383684378,
-    "duration" : 0
-  },
-  "status" : "passed",
-  "severity" : "normal"
-}, {
-  "uid" : "62c89b7beb92108b",
-  "name" : "test_supergroup",
-  "time" : {
-    "start" : 1641383684349,
-    "stop" : 1641383684349,
-    "duration" : 0
-  },
-  "status" : "passed",
-  "severity" : "normal"
-}, {
-  "uid" : "aefd650f5a799ec3",
-  "name" : "test_group_all_members_are_administrators",
-  "time" : {
-    "start" : 1641383684344,
-    "stop" : 1641383684344,
-    "duration" : 0
-  },
-  "status" : "passed",
-  "severity" : "normal"
-}, {
-  "uid" : "e43513db3733e979",
-  "name" : "test_channel",
-  "time" : {
-    "start" : 1641383684355,
-    "stop" : 1641383684355,
-    "duration" : 0
-  },
-  "status" : "passed",
-  "severity" : "normal"
-}, {
-  "uid" : "53e8ebcc398f54d3",
+  "uid" : "387cd2cf1b9619e8",
   "name" : "test_private_from_user",
   "time" : {
-    "start" : 1641383684347,
-    "stop" : 1641383684348,
+    "start" : 1641383685978,
+    "stop" : 1641383685978,
+    "duration" : 0
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "76abd5c296514223",
+  "name" : "test_supergroup_with_title",
+  "time" : {
+    "start" : 1641383685980,
+    "stop" : 1641383685980,
+    "duration" : 0
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "af4054ea1496cf4c",
+  "name" : "test_answerInlineQuery",
+  "time" : {
+    "start" : 1641383686016,
+    "stop" : 1641383686017,
     "duration" : 1
   },
   "status" : "passed",
   "severity" : "normal"
 }, {
-  "uid" : "afeff4f9f8441d38",
-  "name" : "test_getChatMembersCount",
+  "uid" : "f97b807dcf057b8b",
+  "name" : "test_supergroup",
   "time" : {
-    "start" : 1641383684410,
-    "stop" : 1641383684410,
+    "start" : 1641383685979,
+    "stop" : 1641383685979,
     "duration" : 0
   },
   "status" : "passed",
   "severity" : "normal"
 }, {
-  "uid" : "4476dd0ad36e5100",
+  "uid" : "c8638df1fa561c0a",
   "name" : "test_with_chat",
   "time" : {
-    "start" : 1641383684398,
-    "stop" : 1641383684398,
+    "start" : 1641383686014,
+    "stop" : 1641383686014,
     "duration" : 0
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "c4a88a40765b884e",
+  "name" : "test_with_location",
+  "time" : {
+    "start" : 1641383685997,
+    "stop" : 1641383685998,
+    "duration" : 1
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "d90c29475402a807",
+  "name" : "test_new_chat_photo",
+  "time" : {
+    "start" : 1641383686010,
+    "stop" : 1641383686010,
+    "duration" : 0
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "12095bd2b1ff4eae",
+  "name" : "test_group_all_members_are_administrators",
+  "time" : {
+    "start" : 1641383685975,
+    "stop" : 1641383685975,
+    "duration" : 0
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "b1fe540938f8040a",
+  "name" : "test_location",
+  "time" : {
+    "start" : 1641383685995,
+    "stop" : 1641383685995,
+    "duration" : 0
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "4e2425a171da520f",
+  "name" : "test_getChatMembersCount",
+  "time" : {
+    "start" : 1641383686022,
+    "stop" : 1641383686023,
+    "duration" : 1
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "85aad2acb77dd46d",
+  "name" : "test_without_parameter",
+  "time" : {
+    "start" : 1641383685973,
+    "stop" : 1641383685973,
+    "duration" : 0
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "6d84c01e457a6ec9",
+  "name" : "test_chosen_inline_result",
+  "time" : {
+    "start" : 1641383685996,
+    "stop" : 1641383685996,
+    "duration" : 0
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "9a83b00af75e563b",
+  "name" : "test_query",
+  "time" : {
+    "start" : 1641383685992,
+    "stop" : 1641383685992,
+    "duration" : 0
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "458e709e218c0888",
+  "name" : "test_channel_with_username_title",
+  "time" : {
+    "start" : 1641383685987,
+    "stop" : 1641383685987,
+    "duration" : 0
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "f4a143723a02fd14",
+  "name" : "test_supergroup_with_username_title",
+  "time" : {
+    "start" : 1641383685983,
+    "stop" : 1641383685983,
+    "duration" : 0
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "6d131a892d73c75e",
+  "name" : "test_with_user",
+  "time" : {
+    "start" : 1641383685990,
+    "stop" : 1641383685991,
+    "duration" : 1
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "69e6f4f45d95d789",
+  "name" : "test_getChatAdministrators",
+  "time" : {
+    "start" : 1641383686019,
+    "stop" : 1641383686020,
+    "duration" : 1
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "70b89619c793c7fb",
+  "name" : "test_inline_message_id",
+  "time" : {
+    "start" : 1641383685999,
+    "stop" : 1641383685999,
+    "duration" : 0
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "71e38fc44ef9617a",
+  "name" : "test_leaveChat",
+  "time" : {
+    "start" : 1641383686026,
+    "stop" : 1641383686026,
+    "duration" : 0
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "e12baa99444287c3",
+  "name" : "test_with_chat_and_user",
+  "time" : {
+    "start" : 1641383686004,
+    "stop" : 1641383686004,
+    "duration" : 0
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "3a5c3a06e0f23463",
+  "name" : "test_new_chat_members",
+  "time" : {
+    "start" : 1641383686008,
+    "stop" : 1641383686008,
+    "duration" : 0
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "618f8b7da96dde36",
+  "name" : "test_channel",
+  "time" : {
+    "start" : 1641383685984,
+    "stop" : 1641383685984,
+    "duration" : 0
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "fdb158ff85ce743e",
+  "name" : "test_user",
+  "time" : {
+    "start" : 1641383686000,
+    "stop" : 1641383686000,
+    "duration" : 0
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "71d9a397c7c18674",
+  "name" : "test_left_chat_member",
+  "time" : {
+    "start" : 1641383686006,
+    "stop" : 1641383686007,
+    "duration" : 1
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "36ba70c777a98936",
+  "name" : "test_standard",
+  "time" : {
+    "start" : 1641383685989,
+    "stop" : 1641383685989,
+    "duration" : 0
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "b127e5d89650f471",
+  "name" : "test_unbanChatMember",
+  "time" : {
+    "start" : 1641383686029,
+    "stop" : 1641383686029,
+    "duration" : 0
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "d28ff5d6ea512966",
+  "name" : "test_group_chat",
+  "time" : {
+    "start" : 1641383685974,
+    "stop" : 1641383685974,
+    "duration" : 0
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "56ae5ec8467d34e6",
+  "name" : "test_sendChatAction",
+  "time" : {
+    "start" : 1641383686027,
+    "stop" : 1641383686027,
+    "duration" : 0
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "46933aee8174580",
+  "name" : "test_channel_with_username",
+  "time" : {
+    "start" : 1641383685986,
+    "stop" : 1641383685986,
+    "duration" : 0
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "fb5f10a622fffa3f",
+  "name" : "test_kickChatMember",
+  "time" : {
+    "start" : 1641383686024,
+    "stop" : 1641383686024,
+    "duration" : 0
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "de0133df47a5a061",
+  "name" : "test_channel_with_title",
+  "time" : {
+    "start" : 1641383685985,
+    "stop" : 1641383685985,
+    "duration" : 0
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "496d8086e62c162f",
+  "name" : "test_supergroup_with_username",
+  "time" : {
+    "start" : 1641383685981,
+    "stop" : 1641383685982,
+    "duration" : 1
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "d2d3a14caf35378a",
+  "name" : "test_getChatMember",
+  "time" : {
+    "start" : 1641383686021,
+    "stop" : 1641383686021,
+    "duration" : 0
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "3afbca29d864d144",
+  "name" : "test_getChat",
+  "time" : {
+    "start" : 1641383686018,
+    "stop" : 1641383686018,
+    "duration" : 0
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "82f9eea5c8dd0a3b",
+  "name" : "test_group_chat_with_group_name",
+  "time" : {
+    "start" : 1641383685977,
+    "stop" : 1641383685977,
+    "duration" : 0
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "359e7dde9c7ae4b6",
+  "name" : "test_with_chat",
+  "time" : {
+    "start" : 1641383686002,
+    "stop" : 1641383686002,
+    "duration" : 0
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "e1a76d6486a2172",
+  "name" : "test_new_chat_title",
+  "time" : {
+    "start" : 1641383686011,
+    "stop" : 1641383686012,
+    "duration" : 1
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "8c32c2ba238ad342",
+  "name" : "test_offset",
+  "time" : {
+    "start" : 1641383685993,
+    "stop" : 1641383685994,
+    "duration" : 1
   },
   "status" : "passed",
   "severity" : "normal"

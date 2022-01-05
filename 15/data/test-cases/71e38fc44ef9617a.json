@@ -1,0 +1,106 @@
+{
+  "uid" : "71e38fc44ef9617a",
+  "name" : "test_leaveChat",
+  "fullName" : "tests.test_Mockbot.TestMockbot#test_leaveChat",
+  "historyId" : "d5e345943eeefdc6daa9d9872664a8ea",
+  "time" : {
+    "start" : 1641383686026,
+    "stop" : 1641383686026,
+    "duration" : 0
+  },
+  "status" : "passed",
+  "flaky" : false,
+  "newFailed" : false,
+  "beforeStages" : [ {
+    "name" : "unittest_setUpClass_fixture_TestMockbot",
+    "time" : {
+      "start" : 1641383686016,
+      "stop" : 1641383686016,
+      "duration" : 0
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false,
+    "hasContent" : false
+  } ],
+  "afterStages" : [ {
+    "name" : "unittest_setUpClass_fixture_TestMockbot::0",
+    "time" : {
+      "start" : 1641383686029,
+      "stop" : 1641383686029,
+      "duration" : 0
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false,
+    "hasContent" : false
+  } ],
+  "labels" : [ {
+    "name" : "parentSuite",
+    "value" : "tests"
+  }, {
+    "name" : "suite",
+    "value" : "test_Mockbot"
+  }, {
+    "name" : "subSuite",
+    "value" : "TestMockbot"
+  }, {
+    "name" : "host",
+    "value" : "fv-az127-642"
+  }, {
+    "name" : "thread",
+    "value" : "3257-MainThread"
+  }, {
+    "name" : "framework",
+    "value" : "pytest"
+  }, {
+    "name" : "language",
+    "value" : "cpython3"
+  }, {
+    "name" : "package",
+    "value" : "tests.test_Mockbot"
+  }, {
+    "name" : "resultFormat",
+    "value" : "allure2"
+  } ],
+  "parameters" : [ ],
+  "links" : [ ],
+  "hidden" : false,
+  "retry" : false,
+  "extra" : {
+    "severity" : "normal",
+    "retries" : [ ],
+    "categories" : [ ],
+    "history" : {
+      "statistic" : {
+        "failed" : 0,
+        "broken" : 0,
+        "skipped" : 0,
+        "passed" : 2,
+        "unknown" : 0,
+        "total" : 2
+      },
+      "items" : [ {
+        "uid" : "56c3678d94fe3c14",
+        "reportUrl" : "https://vaknir.github.io/ptbtest/15//#testresult/56c3678d94fe3c14",
+        "status" : "passed",
+        "time" : {
+          "start" : 1641383679281,
+          "stop" : 1641383679281,
+          "duration" : 0
+        }
+      } ]
+    },
+    "tags" : [ ]
+  },
+  "source" : "71e38fc44ef9617a.json",
+  "parameterValues" : [ ]
+}

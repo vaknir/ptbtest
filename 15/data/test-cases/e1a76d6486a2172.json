@@ -1,0 +1,106 @@
+{
+  "uid" : "e1a76d6486a2172",
+  "name" : "test_new_chat_title",
+  "fullName" : "tests.test_Messagegenerator.TestMessageGeneratorStatusMessages#test_new_chat_title",
+  "historyId" : "f9b4bb2359b1781f22f7c3c68b95ff37",
+  "time" : {
+    "start" : 1641383686011,
+    "stop" : 1641383686012,
+    "duration" : 1
+  },
+  "status" : "passed",
+  "flaky" : false,
+  "newFailed" : false,
+  "beforeStages" : [ {
+    "name" : "unittest_setUpClass_fixture_TestMessageGeneratorStatusMessages",
+    "time" : {
+      "start" : 1641383686006,
+      "stop" : 1641383686006,
+      "duration" : 0
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false,
+    "hasContent" : false
+  } ],
+  "afterStages" : [ {
+    "name" : "unittest_setUpClass_fixture_TestMessageGeneratorStatusMessages::0",
+    "time" : {
+      "start" : 1641383686012,
+      "stop" : 1641383686012,
+      "duration" : 0
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false,
+    "hasContent" : false
+  } ],
+  "labels" : [ {
+    "name" : "parentSuite",
+    "value" : "tests"
+  }, {
+    "name" : "suite",
+    "value" : "test_Messagegenerator"
+  }, {
+    "name" : "subSuite",
+    "value" : "TestMessageGeneratorStatusMessages"
+  }, {
+    "name" : "host",
+    "value" : "fv-az127-642"
+  }, {
+    "name" : "thread",
+    "value" : "3257-MainThread"
+  }, {
+    "name" : "framework",
+    "value" : "pytest"
+  }, {
+    "name" : "language",
+    "value" : "cpython3"
+  }, {
+    "name" : "package",
+    "value" : "tests.test_Messagegenerator"
+  }, {
+    "name" : "resultFormat",
+    "value" : "allure2"
+  } ],
+  "parameters" : [ ],
+  "links" : [ ],
+  "hidden" : false,
+  "retry" : false,
+  "extra" : {
+    "severity" : "normal",
+    "retries" : [ ],
+    "categories" : [ ],
+    "history" : {
+      "statistic" : {
+        "failed" : 0,
+        "broken" : 0,
+        "skipped" : 0,
+        "passed" : 2,
+        "unknown" : 0,
+        "total" : 2
+      },
+      "items" : [ {
+        "uid" : "cff9883a3af39f8d",
+        "reportUrl" : "https://vaknir.github.io/ptbtest/15//#testresult/cff9883a3af39f8d",
+        "status" : "passed",
+        "time" : {
+          "start" : 1641383679265,
+          "stop" : 1641383679266,
+          "duration" : 1
+        }
+      } ]
+    },
+    "tags" : [ ]
+  },
+  "source" : "e1a76d6486a2172.json",
+  "parameterValues" : [ ]
+}

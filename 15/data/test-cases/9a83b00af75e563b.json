@@ -1,0 +1,76 @@
+{
+  "uid" : "9a83b00af75e563b",
+  "name" : "test_query",
+  "fullName" : "tests.test_Inlinequerygenerator#test_query",
+  "historyId" : "3ef89e78dd9ab099a94702733f3f70e6",
+  "time" : {
+    "start" : 1641383685992,
+    "stop" : 1641383685992,
+    "duration" : 0
+  },
+  "status" : "passed",
+  "flaky" : false,
+  "newFailed" : false,
+  "beforeStages" : [ ],
+  "afterStages" : [ ],
+  "labels" : [ {
+    "name" : "tag",
+    "value" : "inlinequery"
+  }, {
+    "name" : "parentSuite",
+    "value" : "tests"
+  }, {
+    "name" : "suite",
+    "value" : "test_Inlinequerygenerator"
+  }, {
+    "name" : "host",
+    "value" : "fv-az127-642"
+  }, {
+    "name" : "thread",
+    "value" : "3257-MainThread"
+  }, {
+    "name" : "framework",
+    "value" : "pytest"
+  }, {
+    "name" : "language",
+    "value" : "cpython3"
+  }, {
+    "name" : "package",
+    "value" : "tests.test_Inlinequerygenerator"
+  }, {
+    "name" : "resultFormat",
+    "value" : "allure2"
+  } ],
+  "parameters" : [ ],
+  "links" : [ ],
+  "hidden" : false,
+  "retry" : false,
+  "extra" : {
+    "severity" : "normal",
+    "retries" : [ ],
+    "categories" : [ ],
+    "history" : {
+      "statistic" : {
+        "failed" : 0,
+        "broken" : 0,
+        "skipped" : 0,
+        "passed" : 2,
+        "unknown" : 0,
+        "total" : 2
+      },
+      "items" : [ {
+        "uid" : "e3bc488b5357d1d7",
+        "reportUrl" : "https://vaknir.github.io/ptbtest/15//#testresult/e3bc488b5357d1d7",
+        "status" : "passed",
+        "time" : {
+          "start" : 1641383679245,
+          "stop" : 1641383679245,
+          "duration" : 0
+        }
+      } ]
+    },
+    "tags" : [ "inlinequery" ]
+  },
+  "source" : "9a83b00af75e563b.json",
+  "parameterValues" : [ ]
+}
