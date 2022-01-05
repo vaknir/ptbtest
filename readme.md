@@ -2,7 +2,7 @@
 [![PyPI](https://img.shields.io/pypi/v/ptb_unittest.svg)](https://pypi.python.org/pypi/ptb_unittest) [![PyPI](https://img.shields.io/pypi/pyversions/ptb_unittest.svg)](https://pypi.python.org/pypi/ptb_unittest)
 
 
-[![Python 3.6](https://img.shields.io/badge/python-3.6-blue.svg)](https://www.python.org/downloads/release/python-360/)
+[![Python](https://img.shields.io/pypi/pyversions/python-telegram-bot)]
 ![tests workflow](https://github.com/vaknir/ptbtest/actions/workflows/ptb-actions.yml/badge.svg)
 
 # ptb unittest
