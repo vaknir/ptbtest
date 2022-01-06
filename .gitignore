@@ -103,6 +103,3 @@ tests/pytest_results
 
 #pytest
 tests/pytest_results
-
-# allure
-allure-results/

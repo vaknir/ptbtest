@@ -19,92 +19,86 @@
 # You should have received a copy of the GNU Lesser Public License
 # along with this program.  If not, see [http://www.gnu.org/licenses/].
 from __future__ import absolute_import
+import pytest
+from ptbtest import (BadBotException, BadCallbackQueryException,
+                     BadUserException, BadMessageException)
+from ptbtest import (CallbackQueryGenerator, MessageGenerator, Mockbot,
+                     UserGenerator)
+from telegram import (CallbackQuery, Message, Update, User)
 import sys
 sys.path.append("..")
 
-from telegram import (CallbackQuery, Message, Update, User)
-from ptbtest import (CallbackQueryGenerator, MessageGenerator, Mockbot,
-                     UserGenerator)
-from ptbtest import (BadBotException, BadCallbackQueryException,
-                     BadUserException, BadMessageException)
 
-import unittest
+cqg = CallbackQueryGenerator()
 
 
-
-class TestMessageGeneratorChannelPost(unittest.TestCase):
-    def setUp(self):
-        self.cqg = CallbackQueryGenerator()
-
-    def test_invalid_calls(self):
-        with self.assertRaisesRegexp(BadCallbackQueryException,
+@pytest.mark.callback
+def test_invalid_calls():
+        with pytest.raises(BadCallbackQueryException,
                                      "message and inline_message_id"):
-            self.cqg.get_callback_query()
-        with self.assertRaisesRegexp(BadCallbackQueryException,
+            cqg.get_callback_query()
+        with pytest.raises(BadCallbackQueryException,
                                      "message and inline_message_id"):
-            self.cqg.get_callback_query(message=True, inline_message_id=True)
-        with self.assertRaisesRegexp(BadCallbackQueryException,
+            cqg.get_callback_query(message=True, inline_message_id=True)
+        with pytest.raises(BadCallbackQueryException,
                                      "data and game_short_name"):
-            self.cqg.get_callback_query(message=True)
-        with self.assertRaisesRegexp(BadCallbackQueryException,
+            cqg.get_callback_query(message=True)
+        with pytest.raises(BadCallbackQueryException,
                                      "data and game_short_name"):
-            self.cqg.get_callback_query(
+            cqg.get_callback_query(
                 message=True, data="test-data", game_short_name="mygame")
 
-    def test_required_auto_set(self):
-        u = self.cqg.get_callback_query(
+@pytest.mark.callback
+def test_required_auto_set():
+        u = cqg.get_callback_query(
             inline_message_id=True, data="test-data")
-        self.assertIsInstance(u.callback_query.from_user, User)
-        self.assertIsInstance(u.callback_query.chat_instance, str)
+        assert isinstance(u.callback_query.from_user, User)
+        assert isinstance(u.callback_query.chat_instance, str)
         bot = Mockbot(username="testbot")
         cqg2 = CallbackQueryGenerator(bot=bot)
-        self.assertEqual(bot.username, cqg2.bot.username)
+        assert bot.username == cqg2.bot.username
 
-        with self.assertRaises(BadBotException):
+        with pytest.raises(BadBotException):
             cqg3 = CallbackQueryGenerator(bot="bot")
+@pytest.mark.callback
+def test_message():
+    mg = MessageGenerator()
+    message = mg.get_message().message
+    u = cqg.get_callback_query(message=message, data="test-data")
+    assert isinstance(u, Update)
+    assert isinstance(u.callback_query, CallbackQuery)
+    assert u.callback_query.message.message_id == message.message_id
 
-    def test_message(self):
-        mg = MessageGenerator()
-        message = mg.get_message().message
-        u = self.cqg.get_callback_query(message=message, data="test-data")
-        self.assertIsInstance(u, Update)
-        self.assertIsInstance(u.callback_query, CallbackQuery)
-        self.assertEqual(u.callback_query.message.message_id,
-                         message.message_id)
+    u = cqg.get_callback_query(message=True, data="test-data")
 
-        u = self.cqg.get_callback_query(message=True, data="test-data")
-        self.assertIsInstance(u.callback_query.message, Message)
-        self.assertEqual(u.callback_query.message.from_user.username,
-                         self.cqg.bot.username)
+    assert isinstance(u.callback_query.message, Message)
+    assert u.callback_query.message.from_user.username == cqg.bot.username
+    with pytest.raises(BadMessageException):
+        cqg.get_callback_query(message="message", data="test-data")
 
-        with self.assertRaises(BadMessageException):
-            self.cqg.get_callback_query(message="message", data="test-data")
-
-    def test_inline_message_id(self):
-        u = self.cqg.get_callback_query(
+@pytest.mark.callback
+def test_inline_message_id():
+    u = cqg.get_callback_query(
             inline_message_id="myidilike", data="test-data")
-        self.assertEqual(u.callback_query.inline_message_id, "myidilike")
-        u = self.cqg.get_callback_query(
+    assert u.callback_query.inline_message_id == "myidilike"
+    u = cqg.get_callback_query(
             inline_message_id=True, data="test-data")
-        self.assertIsInstance(u.callback_query.inline_message_id, str)
+    assert isinstance(u.callback_query.inline_message_id, str)
 
-        with self.assertRaisesRegexp(BadCallbackQueryException,
+    with pytest.raises(BadCallbackQueryException,
                                      "string or True"):
-            self.cqg.get_callback_query(
+        cqg.get_callback_query(
                 inline_message_id=3.98, data="test-data")
 
-    def test_user(self):
+@pytest.mark.callback
+def test_user():
         ug = UserGenerator()
         user = ug.get_user()
-        u = self.cqg.get_callback_query(
+        u = cqg.get_callback_query(
             user=user, message=True, data="test-data")
-        self.assertEqual(user.id, u.callback_query.from_user.id)
-        self.assertNotEqual(user.id, u.callback_query.message.from_user.id)
+        assert user.id == u.callback_query.from_user.id
+        assert user.id != u.callback_query.message.from_user.id
 
-        with self.assertRaises(BadUserException):
-            u = self.cqg.get_callback_query(
+        with pytest.raises(BadUserException):
+            u = cqg.get_callback_query(
                 user="user", inline_message_id=True, data="test-data")
-
-
-if __name__ == '__main__':
-    unittest.main()
