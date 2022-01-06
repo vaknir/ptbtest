@@ -23,7 +23,6 @@ from __future__ import absolute_import
 import pytest
 from ptbtest import UserGenerator
 from ptbtest import ChatGenerator
-import unittest
 import sys
 
 from telegram.chat import Chat

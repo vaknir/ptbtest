@@ -19,14 +19,15 @@
 # You should have received a copy of the GNU Lesser Public License
 # along with this program.  If not, see [http://www.gnu.org/licenses/].
 from __future__ import absolute_import
+import sys
+sys.path.append("..")
 import pytest
 from ptbtest import (BadBotException, BadCallbackQueryException,
                      BadUserException, BadMessageException)
 from ptbtest import (CallbackQueryGenerator, MessageGenerator, Mockbot,
                      UserGenerator)
 from telegram import (CallbackQuery, Message, Update, User)
-import sys
-sys.path.append("..")
+
 
 
 cqg = CallbackQueryGenerator()
