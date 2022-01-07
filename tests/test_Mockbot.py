@@ -30,6 +30,7 @@ from telegram import InlineQueryResult
 from telegram import InlineKeyboardMarkup, InlineKeyboardButton
 from telegram import ChatAction
 import telegram
+import unittest
 
 
 class TestMockbot(unittest.TestCase):
