@@ -19,17 +19,17 @@
 # You should have received a copy of the GNU Lesser Public License
 # along with this program.  If not, see [http://www.gnu.org/licenses/].
 from __future__ import absolute_import
+import sys
 
+sys.path.append("..")
 import pytest
 from ptbtest import UserGenerator
 from ptbtest import ChatGenerator
-import sys
-
 from telegram.chat import Chat
-sys.path.append("..")
 
 
 cg = ChatGenerator()
+
 
 @pytest.mark.chat
 def test_without_parameter():
@@ -49,11 +49,13 @@ def test_group_chat():
     assert c.all_members_are_administrators == False
     assert isinstance(c.title, str)
 
+
 @pytest.mark.chat
 def test_group_all_members_are_administrators():
     c = cg.get_chat(type="group", all_members_are_administrators=True)
     assert c.type == "group"
     assert c.all_members_are_administrators == True
+
 
 @pytest.mark.chat
 def test_group_chat_with_group_name():
@@ -90,6 +92,7 @@ def test_supergroup_with_title():
     assert c.title == "Awesome Group"
     assert c.username == "AwesomeGroup"
 
+
 @pytest.mark.chat
 def test_supergroup_with_username():
     c = cg.get_chat(type="supergroup", username="mygroup")
@@ -99,8 +102,7 @@ def test_supergroup_with_username():
 
 @pytest.mark.chat
 def test_supergroup_with_username_title():
-    c = cg.get_chat(
-        type="supergroup", username="mygroup", title="Awesome Group")
+    c = cg.get_chat(type="supergroup", username="mygroup", title="Awesome Group")
 
     assert c.title == "Awesome Group"
     assert c.username == "mygroup"
@@ -119,7 +121,8 @@ def test_channel():
 def test_channel_with_title():
     c = cg.get_chat(type="channel", title="Awesome Group")
     assert c.title == "Awesome Group"
-    assert c.username =="AwesomeGroup"
+    assert c.username == "AwesomeGroup"
+
 
 @pytest.mark.chat
 def test_channel_with_username():
@@ -130,8 +133,7 @@ def test_channel_with_username():
 
 @pytest.mark.chat
 def test_channel_with_username_title():
-    c = cg.get_chat(
-        type="channel", username="mygroup", title="Awesome Channel")
+    c = cg.get_chat(type="channel", username="mygroup", title="Awesome Channel")
 
     assert c.title == "Awesome Channel"
     assert c.username == "mygroup"

@@ -19,7 +19,9 @@
 # You should have received a copy of the GNU Lesser Public License
 # along with this program.  If not, see [http://www.gnu.org/licenses/].
 from __future__ import absolute_import
-from re import match
+import sys
+
+sys.path.append("..")
 from telegram import User
 from telegram import Update
 from telegram import Location
@@ -28,10 +30,8 @@ from telegram import ChosenInlineResult
 from ptbtest import UserGenerator
 from ptbtest import Mockbot
 from ptbtest import InlineQueryGenerator
-from ptbtest.errors import (BadBotException, BadUserException)
+from ptbtest.errors import BadBotException, BadUserException
 import pytest
-import sys
-sys.path.append("..")
 
 
 iqg = InlineQueryGenerator()
@@ -126,8 +126,7 @@ def test_inline_message_id():
     u = iqc.get_chosen_inline_result("test")
     assert isinstance(u.chosen_inline_result.inline_message_id, str)
 
-    u = iqc.get_chosen_inline_result(
-        "test", inline_message_id="myidilike")
+    u = iqc.get_chosen_inline_result("test", inline_message_id="myidilike")
     assert u.chosen_inline_result.inline_message_id == "myidilike"
 
 

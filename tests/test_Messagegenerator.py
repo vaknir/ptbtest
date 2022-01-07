@@ -1,13 +1,31 @@
 from __future__ import absolute_import
-from telegram import (Audio, Contact, Document, Location, Sticker, User,
-                      Update, Venue, Video, Voice, PhotoSize, Message)
-from ptbtest import (UserGenerator, MessageGenerator, ChatGenerator)
-from ptbtest import Mockbot
-from ptbtest import (BadBotException, BadChatException, BadUserException,
-                     BadMarkupException, BadMessageException)
-import unittest
 import sys
+
 sys.path.append("..")
+from telegram import (
+    Audio,
+    Contact,
+    Document,
+    Location,
+    Sticker,
+    User,
+    Update,
+    Venue,
+    Video,
+    Voice,
+    PhotoSize,
+    Message,
+)
+from ptbtest import UserGenerator, MessageGenerator, ChatGenerator
+from ptbtest import Mockbot
+from ptbtest import (
+    BadBotException,
+    BadChatException,
+    BadUserException,
+    BadMarkupException,
+    BadMessageException,
+)
+import unittest
 
 
 class TestMessageGeneratorCore(unittest.TestCase):
@@ -108,8 +126,10 @@ class TestMessageGeneratorText(unittest.TestCase):
         self.assertEqual(u.message.text, "This is a test")
 
     def test_text_with_markdown(self):
-        teststr = "we have *bold* `code` [google](www.google.com) @username #hashtag _italics_ ```pre block``` " \
-                  "ftp://snt.utwente.nl /start"
+        teststr = (
+            "we have *bold* `code` [google](www.google.com) @username #hashtag _italics_ ```pre block``` "
+            "ftp://snt.utwente.nl /start"
+        )
         u = self.mg.get_message(text=teststr)
         self.assertEqual(u.message.text, teststr)
 
@@ -146,12 +166,13 @@ class TestMessageGeneratorText(unittest.TestCase):
                 self.assertEqual(ent.length, 6)
 
         with self.assertRaises(BadMarkupException):
-            self.mg.get_message(
-                text="bad *_double_* markdown", parse_mode="Markdown")
+            self.mg.get_message(text="bad *_double_* markdown", parse_mode="Markdown")
 
     def test_with_html(self):
-        teststr = "we have <b>bold</b> <code>code</code> <a href='www.google.com'>google</a> @username #hashtag " \
-                  "<i>italics</i> <pre>pre block</pre> ftp://snt.utwente.nl /start"
+        teststr = (
+            "we have <b>bold</b> <code>code</code> <a href='www.google.com'>google</a> @username #hashtag "
+            "<i>italics</i> <pre>pre block</pre> ftp://snt.utwente.nl /start"
+        )
         u = self.mg.get_message(text=teststr)
         self.assertEqual(u.message.text, teststr)
 
@@ -189,7 +210,8 @@ class TestMessageGeneratorText(unittest.TestCase):
 
         with self.assertRaises(BadMarkupException):
             self.mg.get_message(
-                text="bad <b><i>double</i></b> markup", parse_mode="HTML")
+                text="bad <b><i>double</i></b> markup", parse_mode="HTML"
+            )
 
     def test_wrong_markup(self):
         with self.assertRaises(BadMarkupException):
@@ -202,8 +224,7 @@ class TestMessageGeneratorReplies(unittest.TestCase):
 
     def test_reply(self):
         u1 = self.mg.get_message(text="this is the first")
-        u2 = self.mg.get_message(
-            text="This is the second", reply_to_message=u1.message)
+        u2 = self.mg.get_message(text="This is the second", reply_to_message=u1.message)
         self.assertEqual(u1.message.text, u2.message.reply_to_message.text)
 
         with self.assertRaises(BadMessageException):
@@ -219,30 +240,32 @@ class TestMessageGeneratorForwards(unittest.TestCase):
 
     def test_forwarded_message(self):
         import datetime
+
         u1 = self.ug.get_user()
         u2 = self.ug.get_user()
         c = self.cg.get_chat(type="group")
-        u = self.mg.get_message(
-            user=u1, chat=c, forward_from=u2, text="This is a test")
+        u = self.mg.get_message(user=u1, chat=c, forward_from=u2, text="This is a test")
         self.assertEqual(u.message.from_user.id, u1.id)
         self.assertEqual(u.message.forward_from.id, u2.id)
         self.assertNotEqual(u.message.from_user.id, u.message.forward_from.id)
         self.assertEqual(u.message.text, "This is a test")
         self.assertIsInstance(u.message.forward_date, datetime.datetime)
-        self.mg.get_message(
-            forward_from=u2, forward_date=datetime.datetime.now())
+        self.mg.get_message(forward_from=u2, forward_date=datetime.datetime.now())
 
         with self.assertRaises(BadUserException):
             u3 = "This is not a User"
             u = self.mg.get_message(
-                user=u1, chat=c, forward_from=u3, text="This is a test")
+                user=u1, chat=c, forward_from=u3, text="This is a test"
+            )
 
     def test_forwarded_channel_message(self):
         import datetime
+
         c = self.cg.get_chat(type="channel")
         us = self.ug.get_user()
         u = self.mg.get_message(
-            text="This is a test", forward_from=us, forward_from_chat=c)
+            text="This is a test", forward_from=us, forward_from_chat=c
+        )
         self.assertNotEqual(u.message.chat.id, c.id)
         self.assertNotEqual(u.message.from_user.id, us.id)
         self.assertEqual(u.message.forward_from.id, us.id)
@@ -284,7 +307,7 @@ class TestMessageGeneratorStatusMessages(unittest.TestCase):
 
     def test_left_chat_member(self):
         user = self.ug.get_user()
-        chat = self.cg.get_chat(type='group')
+        chat = self.cg.get_chat(type="group")
         u = self.mg.get_message(chat=chat, left_chat_member=user)
         self.assertEqual(u.message.left_chat_member.id, user.id)
 
@@ -322,8 +345,7 @@ class TestMessageGeneratorStatusMessages(unittest.TestCase):
 
     def test_pinned_message(self):
         chat = self.cg.get_chat(type="supergroup")
-        message = self.mg.get_message(
-            chat=chat, text="this will be pinned").message
+        message = self.mg.get_message(chat=chat, text="this will be pinned").message
         u = self.mg.get_message(chat=chat, pinned_message=message)
         self.assertEqual(u.message.pinned_message.text, "this will be pinned")
 
@@ -337,7 +359,8 @@ class TestMessageGeneratorStatusMessages(unittest.TestCase):
             self.mg.get_message(
                 private=False,
                 new_chat_members=self.ug.get_user(),
-                new_chat_title="New title")
+                new_chat_title="New title",
+            )
 
 
 class TestMessageGeneratorAttachments(unittest.TestCase):
@@ -360,8 +383,7 @@ class TestMessageGeneratorAttachments(unittest.TestCase):
         u = self.mg.get_message(location=True)
         self.assertIsInstance(u.message.location, Location)
 
-        with self.assertRaisesRegexp(BadMessageException,
-                                     r"telegram\.Location"):
+        with self.assertRaisesRegexp(BadMessageException, r"telegram\.Location"):
             self.mg.get_message(location="location")
 
     def test_venue(self):
@@ -383,12 +405,11 @@ class TestMessageGeneratorAttachments(unittest.TestCase):
         u = self.mg.get_message(contact=True)
         self.assertIsInstance(u.message.contact, Contact)
 
-        with self.assertRaisesRegexp(BadMessageException,
-                                     r"telegram\.Contact"):
+        with self.assertRaisesRegexp(BadMessageException, r"telegram\.Contact"):
             self.mg.get_message(contact="contact")
 
     def test_voice(self):
-        voice = Voice("idyouknow", "uuid",  12, 30)
+        voice = Voice("idyouknow", "uuid", 12, 30)
         u = self.mg.get_message(voice=voice)
         self.assertEqual(voice.file_id, u.message.voice.file_id)
 
@@ -405,8 +426,13 @@ class TestMessageGeneratorAttachments(unittest.TestCase):
             self.mg.get_message(voice="voice")
 
     def test_video(self):
-        video = Video(file_id="idyouknow", file_unique_id="unid",
-                      width=200, height=200, duration=10)
+        video = Video(
+            file_id="idyouknow",
+            file_unique_id="unid",
+            width=200,
+            height=200,
+            duration=10,
+        )
         u = self.mg.get_message(video=video)
         self.assertEqual(video.file_id, u.message.video.file_id)
 
@@ -434,13 +460,13 @@ class TestMessageGeneratorAttachments(unittest.TestCase):
         u = self.mg.get_message(sticker=True)
         self.assertIsInstance(u.message.sticker, Sticker)
 
-        with self.assertRaisesRegexp(BadMessageException,
-                                     r"telegram\.Sticker"):
+        with self.assertRaisesRegexp(BadMessageException, r"telegram\.Sticker"):
             self.mg.get_message(sticker="sticker")
 
     def test_document(self):
-        document = Document(file_id="idyouknow",
-                            file_unique_id="unid", file_name="test.pdf")
+        document = Document(
+            file_id="idyouknow", file_unique_id="unid", file_name="test.pdf"
+        )
         u = self.mg.get_message(document=document)
         self.assertEqual(document.file_id, u.message.document.file_id)
 
@@ -451,8 +477,7 @@ class TestMessageGeneratorAttachments(unittest.TestCase):
         u = self.mg.get_message(document=True)
         self.assertIsInstance(u.message.document, Document)
 
-        with self.assertRaisesRegexp(BadMessageException,
-                                     r"telegram\.Document"):
+        with self.assertRaisesRegexp(BadMessageException, r"telegram\.Document"):
             self.mg.get_message(document="document")
 
     def test_audio(self):
@@ -499,8 +524,7 @@ class TestMessageGeneratorEditedMessage(unittest.TestCase):
         self.assertIsInstance(u, Update)
 
     def test_with_parameters(self):
-        u = self.mg.get_edited_message(
-            text="New *text*", parse_mode="Markdown")
+        u = self.mg.get_edited_message(text="New *text*", parse_mode="Markdown")
         self.assertEqual(u.edited_message.text, "New text")
         self.assertEqual(len(u.edited_message.entities), 1)
 
@@ -547,7 +571,8 @@ class TestMessageGeneratorChannelPost(unittest.TestCase):
 
     def test_with_content(self):
         u = self.mg.get_channel_post(
-            text="this is *bold* _italic_", parse_mode="Markdown")
+            text="this is *bold* _italic_", parse_mode="Markdown"
+        )
         self.assertEqual(u.channel_post.text, "this is bold italic")
         self.assertEqual(len(u.channel_post.entities), 2)
 
@@ -562,8 +587,7 @@ class TestMessageGeneratorEditedChannelPost(unittest.TestCase):
         self.assertIsInstance(u, Update)
 
     def test_with_parameters(self):
-        u = self.mg.get_edited_channel_post(
-            text="New *text*", parse_mode="Markdown")
+        u = self.mg.get_edited_channel_post(text="New *text*", parse_mode="Markdown")
         self.assertEqual(u.edited_channel_post.text, "New text")
         self.assertEqual(len(u.edited_channel_post.entities), 1)
 
@@ -578,5 +602,5 @@ class TestMessageGeneratorEditedChannelPost(unittest.TestCase):
             self.mg.get_edited_channel_post(channel_post="Message")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

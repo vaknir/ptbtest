@@ -20,6 +20,7 @@
 # along with this program.  If not, see [http://www.gnu.org/licenses/].
 from __future__ import absolute_import
 import sys
+
 sys.path.append("..")
 
 import unittest
@@ -49,5 +50,5 @@ class TestUserGenerator(unittest.TestCase):
         self.assertEqual(u.username, "misterbot")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()
