@@ -19,6 +19,7 @@
 # You should have received a copy of the GNU Lesser Public License
 # along with this program.  If not, see [http://www.gnu.org/licenses/].
 from __future__ import absolute_import
+from re import match
 import sys
 sys.path.append("..")
 import pytest
@@ -36,16 +37,16 @@ cqg = CallbackQueryGenerator()
 @pytest.mark.callback
 def test_invalid_calls():
         with pytest.raises(BadCallbackQueryException,
-                                     "message and inline_message_id"):
+                                     match="message and inline_message_id"):
             cqg.get_callback_query()
         with pytest.raises(BadCallbackQueryException,
-                                     "message and inline_message_id"):
+                           match="message and inline_message_id"):
             cqg.get_callback_query(message=True, inline_message_id=True)
         with pytest.raises(BadCallbackQueryException,
-                                     "data and game_short_name"):
+                           match="data and game_short_name"):
             cqg.get_callback_query(message=True)
         with pytest.raises(BadCallbackQueryException,
-                                     "data and game_short_name"):
+                           match="data and game_short_name"):
             cqg.get_callback_query(
                 message=True, data="test-data", game_short_name="mygame")
 
@@ -53,8 +54,8 @@ def test_invalid_calls():
 def test_required_auto_set():
         u = cqg.get_callback_query(
             inline_message_id=True, data="test-data")
-        assert isinstance(u.callback_query.from_user, User)
-        assert isinstance(u.callback_query.chat_instance, str)
+        assert isinstance(u.callback_query.from_user, User), "From user should be User object"
+        assert isinstance(u.callback_query.chat_instance, str), "Chat instance should be str type"
         bot = Mockbot(username="testbot")
         cqg2 = CallbackQueryGenerator(bot=bot)
         assert bot.username == cqg2.bot.username
@@ -87,7 +88,7 @@ def test_inline_message_id():
     assert isinstance(u.callback_query.inline_message_id, str)
 
     with pytest.raises(BadCallbackQueryException,
-                                     "string or True"):
+                                     match="string or True"):
         cqg.get_callback_query(
                 inline_message_id=3.98, data="test-data")
 
