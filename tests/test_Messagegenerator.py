@@ -13,6 +13,10 @@ from telegram import (
     PhotoSize,
     Message,
 )
+
+import sys
+
+sys.path.append("..")
 from ptbtest import UserGenerator, MessageGenerator, ChatGenerator
 from ptbtest import Mockbot
 from ptbtest import (
@@ -22,10 +26,10 @@ from ptbtest import (
     BadMarkupException,
     BadMessageException,
 )
-import pytest
-import sys
 
-sys.path.append("..")
+
+import pytest
+
 
 
 mg = MessageGenerator()
@@ -404,7 +408,7 @@ def test_location():
     u = mg.get_message(location=True)
     assert isinstance(u.message.location, Location)
 
-    with pytest.raises(BadMessageException, match="telegram\.Location"):
+    with pytest.raises(BadMessageException, match="telegram.Location"):
         mg.get_message(location="location")
 
 @pytest.mark.message
@@ -416,7 +420,7 @@ def test_venue():
     u = mg.get_message(venue=True)
     assert isinstance(u.message.venue, Venue)
 
-    with pytest.raises(BadMessageException, match="telegram\.Venue"):
+    with pytest.raises(BadMessageException, match="telegram.Venue"):
         mg.get_message(venue="Venue")
 
 @pytest.mark.message
@@ -428,7 +432,7 @@ def test_contact():
     u = mg.get_message(contact=True)
     assert isinstance(u.message.contact, Contact)
 
-    with pytest.raises(BadMessageException, match="telegram\.Contact"):
+    with pytest.raises(BadMessageException, match="telegram.Contact"):
         mg.get_message(contact="contact")
 
 @pytest.mark.message
@@ -446,7 +450,7 @@ def test_voice():
     u = mg.get_message(voice=True)
     assert isinstance(u.message.voice, Voice)
 
-    with pytest.raises(BadMessageException, match="telegram\.Voice"):
+    with pytest.raises(BadMessageException, match="telegram.Voice"):
         mg.get_message(voice="voice")
 
 @pytest.mark.message
@@ -470,7 +474,7 @@ def test_video():
     u = mg.get_message(video=True)
     assert isinstance(u.message.video, Video)
 
-    with pytest.raises(BadMessageException, match="telegram\.Video"):
+    with pytest.raises(BadMessageException, match="telegram.Video"):
         mg.get_message(video="video")
 
 @pytest.mark.message
@@ -504,7 +508,7 @@ def test_document():
     u = mg.get_message(document=True)
     assert isinstance(u.message.document, Document)
 
-    with pytest.raises(BadMessageException, match="telegram\.Document"):
+    with pytest.raises(BadMessageException, match="telegram.Document"):
         mg.get_message(document="document")
 
 @pytest.mark.message
@@ -520,7 +524,7 @@ def test_audio():
     u = mg.get_message(audio=True)
     assert isinstance(u.message.audio, Audio)
 
-    with pytest.raises(BadMessageException, match="telegram\.Audio"):
+    with pytest.raises(BadMessageException, match="telegram.Audio"):
         mg.get_message(audio="audio")
 
 @pytest.mark.message
@@ -537,9 +541,9 @@ def test_photo():
     assert isinstance(u.message.photo, list)
     assert isinstance(u.message.photo[0], PhotoSize)
 
-    with pytest.raises(BadMessageException, match="telegram\.Photo"):
+    with pytest.raises(BadMessageException, match="telegram.Photo"):
         mg.get_message(photo="photo")
-    with pytest.raises(BadMessageException, match="telegram\.Photo"):
+    with pytest.raises(BadMessageException, match="telegram.Photo"):
         mg.get_message(photo=[1, 2, 3])
 
 
