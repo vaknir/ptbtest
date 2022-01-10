@@ -30,4 +30,4 @@ jobs:
           flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
       - name: Test with pytest
         run: |
-          pytest -k "inlinequery or chat or callback" -v --junitxml=junit/test-results-${{ matrix.python-version }}.xml
+          python3 -m pytest -m 'chat or callback or inlinequery' -v --junitxml=junit/test-results-${{ matrix.python-version }}.xml
