@@ -23,32 +23,29 @@ import sys
 
 sys.path.append("..")
 
-import unittest
-
+import pytest
 from ptbtest import UserGenerator
 
 
-class TestUserGenerator(unittest.TestCase):
-    def setUp(self):
-        self.ug = UserGenerator()
 
-    def test_no_specification(self):
-        u = self.ug.get_user()
-        self.assertIsInstance(u.id, int)
-        self.assertTrue(u.id > 0)
-        self.assertIsInstance(u.first_name, str)
-        self.assertEqual(u.username, u.first_name + u.last_name)
+ug = UserGenerator()
 
-    def test_with_first_name(self):
-        u = self.ug.get_user(first_name="Test")
-        self.assertEqual(u.first_name, "Test")
-        self.assertTrue(u.username.startswith("Test"))
+@pytest.mark.user
+def test_no_specification():
+        u = ug.get_user()
+        assert isinstance(u.id, int)
+        assert u.id > 0
+        assert isinstance(u.first_name, str)
+        assert u.username == u.first_name + u.last_name
 
-    def test_with_username(self):
-        u = self.ug.get_user(username="misterbot")
+@pytest.mark.user
+def test_with_first_name():
+        u = ug.get_user(first_name="Test")
+        assert u.first_name == "Test"
+        assert u.username.startswith("Test")
 
-        self.assertEqual(u.username, "misterbot")
+@pytest.mark.user
+def test_with_username():
+        u = ug.get_user(username="misterbot")
+        assert u.username == "misterbot"
 
-
-if __name__ == "__main__":
-    unittest.main()
