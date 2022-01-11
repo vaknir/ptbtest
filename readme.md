@@ -1,5 +1,4 @@
-[![Documentation Status](https://readthedocs.org/projects/ptbtestsuite/badge/?version=master)](http://ptbtestsuite.readthedocs.io/en/master/?badge=master) 
-[![PyPI](https://img.shields.io/pypi/v/ptb_unittest.svg)](https://pypi.python.org/pypi/ptb_unittest) [![PyPI](https://img.shields.io/pypi/pyversions/ptb_unittest.svg)](https://pypi.python.org/pypi/ptb_unittest) [![PyPI](https://img.shields.io/pypi/l/ptb_unittest.svg)](https://pypi.python.org/pypi/ptbtest)
+[![Documentation Status](https://readthedocs.org/projects/ptbtestsuite/badge/?version=master)](http://ptbtestsuite.readthedocs.io/en/master/?badge=master) ![Python](https://img.shields.io/pypi/pyversions/python-telegram-bot)]![tests workflow](https://github.com/vaknir/ptbtest/actions/workflows/ptb-actions.yml/badge.svg)
 
 # ptb unittest
 ## a testsuite for [Python telegram bot](https://github.com/python-telegram-bot/python-telegram-bot/)

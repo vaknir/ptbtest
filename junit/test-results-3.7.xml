@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites><testsuite name="pytest" errors="6" failures="0" skipped="0" tests="6" time="0.283" timestamp="2022-01-07T19:55:28.156210" hostname="MBP-173413.local"><testcase classname="" name="tests.test_Callbackquerygenerator" time="0.000"><error message="collection failure">ImportError while importing test module '/Users/nir.vaknin/Documents/nir/ptb/ptbtest/tests/test_Callbackquerygenerator.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+/usr/local/Cellar/python@3.9/3.9.7/Frameworks/Python.framework/Versions/3.9/lib/python3.9/importlib/__init__.py:127: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+tests/test_Callbackquerygenerator.py:26: in &lt;module&gt;
+    from ptbtest import (BadBotException, BadCallbackQueryException,
+E   ImportError: cannot import name 'BadBotException' from 'ptbtest' (unknown location)</error></testcase><testcase classname="" name="tests.test_Chatgenerator" time="0.000"><error message="collection failure">ImportError while importing test module '/Users/nir.vaknin/Documents/nir/ptb/ptbtest/tests/test_Chatgenerator.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+/usr/local/Cellar/python@3.9/3.9.7/Frameworks/Python.framework/Versions/3.9/lib/python3.9/importlib/__init__.py:127: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+tests/test_Chatgenerator.py:24: in &lt;module&gt;
+    from ptbtest import UserGenerator
+E   ImportError: cannot import name 'UserGenerator' from 'ptbtest' (unknown location)</error></testcase><testcase classname="" name="tests.test_Inlinequerygenerator" time="0.000"><error message="collection failure">ImportError while importing test module '/Users/nir.vaknin/Documents/nir/ptb/ptbtest/tests/test_Inlinequerygenerator.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+/usr/local/Cellar/python@3.9/3.9.7/Frameworks/Python.framework/Versions/3.9/lib/python3.9/importlib/__init__.py:127: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+tests/test_Inlinequerygenerator.py:28: in &lt;module&gt;
+    from ptbtest import UserGenerator
+E   ImportError: cannot import name 'UserGenerator' from 'ptbtest' (unknown location)</error></testcase><testcase classname="" name="tests.test_Messagegenerator" time="0.000"><error message="collection failure">ImportError while importing test module '/Users/nir.vaknin/Documents/nir/ptb/ptbtest/tests/test_Messagegenerator.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+/usr/local/Cellar/python@3.9/3.9.7/Frameworks/Python.framework/Versions/3.9/lib/python3.9/importlib/__init__.py:127: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+tests/test_Messagegenerator.py:4: in &lt;module&gt;
+    from ptbtest import (UserGenerator, MessageGenerator, ChatGenerator)
+E   ImportError: cannot import name 'UserGenerator' from 'ptbtest' (unknown location)</error></testcase><testcase classname="" name="tests.test_Mockbot" time="0.000"><error message="collection failure">ImportError while importing test module '/Users/nir.vaknin/Documents/nir/ptb/ptbtest/tests/test_Mockbot.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+/usr/local/Cellar/python@3.9/3.9.7/Frameworks/Python.framework/Versions/3.9/lib/python3.9/importlib/__init__.py:127: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+tests/test_Mockbot.py:22: in &lt;module&gt;
+    from ptbtest import Mockbot
+E   ImportError: cannot import name 'Mockbot' from 'ptbtest' (unknown location)</error></testcase><testcase classname="" name="tests.test_Usergenerator" time="0.000"><error message="collection failure">ImportError while importing test module '/Users/nir.vaknin/Documents/nir/ptb/ptbtest/tests/test_Usergenerator.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+/usr/local/Cellar/python@3.9/3.9.7/Frameworks/Python.framework/Versions/3.9/lib/python3.9/importlib/__init__.py:127: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+tests/test_Usergenerator.py:27: in &lt;module&gt;
+    from ptbtest import UserGenerator
+E   ImportError: cannot import name 'UserGenerator' from 'ptbtest' (unknown location)</error></testcase></testsuite></testsuites>

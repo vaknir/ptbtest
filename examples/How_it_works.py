@@ -5,12 +5,12 @@ The logic of logic of ptbtests is maximally easy.
 First, like in PTB code, we are creating a "bot" and "updater".
 """
 
-from telegram.ext import Updater
-from ptbtest import Mockbot
+# from telegram.ext import Updater
+# from ptbtest import Mockbot
 
 
-self.bot = Mockbot()
-self.updater = Updater(bot=self.bot)
+# self.bot = Mockbot()
+# self.updater = Updater(bot=self.bot)
 
 
 """
