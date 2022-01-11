@@ -1,11 +1,10 @@
 [![Documentation Status](https://readthedocs.org/projects/ptbtestsuite/badge/?version=master)](http://ptbtestsuite.readthedocs.io/en/master/?badge=master) ![Python](https://img.shields.io/pypi/pyversions/python-telegram-bot)]![tests workflow](https://github.com/vaknir/ptbtest/actions/workflows/ptb-actions.yml/badge.svg)
 
-# ptb unittest
+# ptb Pytest
 ## a testsuite for [Python telegram bot](https://github.com/python-telegram-bot/python-telegram-bot/)
 **Note:** This is a derivative work of the original [ptbtest](https://pypi.python.org/pypi/ptbtest)
 
-**Installation:**
-`pip install ptb-unittest`
+
 
 This library is for people wanting to write unittests for their `python-telegram-bot` driven bots.
 The following things make this library attractive to create unittests
