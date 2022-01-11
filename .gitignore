@@ -106,3 +106,6 @@ tests/pytest_results
 
 #alure results
 allure-results
+
+# pytest cache
+.pytest_cache
