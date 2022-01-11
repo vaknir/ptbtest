@@ -75,7 +75,7 @@ def test_properties():
         assert mockbot.last_name == "Bot"
         assert mockbot.name == "@MockBot"
         mb2 = Mockbot("OtherUsername")
-        assert(mb2.name, "@OtherUsername")
+        assert mb2.name == "@OtherUsername"
         mockbot.sendMessage(1, "test 1")
         mockbot.sendMessage(2, "test 2")
         assert len(mockbot.sent_messages) == 2
